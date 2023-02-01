@@ -1,0 +1,12 @@
+.collection-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  .collection-card {
+    border: 1px solid blue;
+    display: flex;
+    .img-container {
+      width: 250px;
+    }
+  }
+}

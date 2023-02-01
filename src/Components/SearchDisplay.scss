@@ -1,0 +1,12 @@
+.search-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  .search-card {
+    border: 1px solid red;
+    display: flex;
+    .img-container {
+      width: 250px;
+    }
+  }
+}
