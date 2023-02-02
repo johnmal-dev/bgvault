@@ -9,7 +9,7 @@ const CollectionDisplay = ({ collection, removeFromCollection }) => {
         <div className='collection-list'>
           {collection.map((game) => {
             return (
-              <div key={game.id} className='collection-card'>
+              <div key={game.key} className='collection-card'>
                 <div className='img-container'>
                   <img src={game.images.small} alt={game.name} />
                 </div>

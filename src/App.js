@@ -45,6 +45,11 @@ function App() {
     push(collectionRef, game);
   };
 
+  const addToWishlist = (game) => {
+    // TODO
+    console.log('add to wishlist');
+  };
+
   const removeFromCollection = (key) => {
     const db = getDatabase(firebase);
     const gameRef = ref(db, `/collection/${key}`);
@@ -55,7 +60,7 @@ function App() {
     <div className='App'>
       <h1>Board Game Vault</h1>
       <GameForm getGames={getGames} />
-      <SearchDisplay searchResults={searchResults} addToCollection={addToCollection} />
+      <SearchDisplay searchResults={searchResults} addToCollection={addToCollection} addToWishlist={addToWishlist} />
       <CollectionDisplay collection={collection} removeFromCollection={removeFromCollection} />
     </div>
   );

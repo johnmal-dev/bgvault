@@ -1,7 +1,8 @@
 import React from 'react';
 import './SearchDisplay.scss';
+import { FaPlus, FaHeart } from 'react-icons/fa';
 
-const SearchDisplay = ({ searchResults, addToCollection }) => {
+const SearchDisplay = ({ searchResults, addToCollection, addToWishlist }) => {
   return (
     <div className='container'>
       <div className='search-display'>
@@ -41,7 +42,12 @@ const SearchDisplay = ({ searchResults, addToCollection }) => {
                   <td className='game-votes'>{game.num_user_ratings}</td>
                   <td className='game-price'>{game.price_text}</td>
                   <td className='game-buttons'>
-                    <button onClick={() => addToCollection(game)}>Add</button>
+                    <button className='button' aria-label='add to collection' onClick={() => addToCollection(game)}>
+                      <FaPlus />
+                    </button>
+                    <button className='button' aria-label='add to wishlist' disabled onClick={() => addToWishlist(game)}>
+                      <FaHeart />
+                    </button>
                   </td>
                 </tr>
               );
