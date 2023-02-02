@@ -9,6 +9,7 @@ import CollectionDisplay from './Components/CollectionDisplay';
 import NavBar from './Components/NavBar';
 import Home from './Components/Home';
 import Wishlist from './Components/Wishlist';
+import CollectionItem from './Components/CollectionItem';
 
 function App() {
   const [searchResults, setSearchResults] = useState([]);
@@ -98,15 +99,22 @@ function App() {
             </>
           }
         />
-        <Route
-          path='/collection'
-          element={
-            <CollectionDisplay
-              collection={collection}
-              removeFromCollection={removeFromCollection}
-            />
-          }
-        />
+        <Route path='/collection'>
+          <Route
+            path=''
+            element={
+              <CollectionDisplay
+                collection={collection}
+                removeFromCollection={removeFromCollection}
+              />
+            }
+          />
+          <Route
+            path=':gameId'
+            element={<CollectionItem />}
+          />
+        </Route>
+
         <Route
           path='/wishlist'
           element={<Wishlist />}

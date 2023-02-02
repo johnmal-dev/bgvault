@@ -1,10 +1,11 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './CollectionDisplay.scss';
 
 const CollectionDisplay = ({ collection, removeFromCollection }) => {
   return (
-    <div className='container'>
-      <div className='collection-display'>
+    <div className='collection-display text-center'>
+      <div className='container'>
         <h2>Collection</h2>
         <div className='collection-list'>
           {collection.map((game) => {
@@ -20,7 +21,10 @@ const CollectionDisplay = ({ collection, removeFromCollection }) => {
                   />
                 </div>
                 <div className='game-info'>
-                  <div>{game.name}</div>
+                  <div className='bold text-center'>{game.name}</div>
+                  <Link to={game.key}>
+                    <button className='button'>Details</button>
+                  </Link>
                 </div>
                 <button onClick={() => removeFromCollection(game.key)}>Remove</button>
               </div>
