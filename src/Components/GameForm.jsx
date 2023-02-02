@@ -8,9 +8,8 @@ const GameForm = ({ setGameQuery }) => {
   };
   return (
     <form
-      className='game-form'
+      className='game-form text-center'
       onSubmit={handleSubmit}
-      className='text-center'
     >
       <label>
         Enter a board game title:{' '}
