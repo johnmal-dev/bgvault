@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
+import './GameForm.scss';
 
-const GameForm = ({ setGameQuery }) => {
-  const [gameInput, setGameInput] = useState('');
+const GameForm = ({ setGameQuery, gameQuery }) => {
+  const [gameInput, setGameInput] = useState(gameQuery);
   const handleSubmit = (e) => {
     e.preventDefault();
     setGameQuery(gameInput);
@@ -11,14 +12,19 @@ const GameForm = ({ setGameQuery }) => {
       className='game-form text-center'
       onSubmit={handleSubmit}
     >
-      <label>
-        Enter a board game title:{' '}
-        <input
-          type='text'
-          value={gameInput}
-          onChange={(e) => setGameInput(e.target.value)}
-        />
+      <label
+        htmlFor='game-input'
+        className='sr-only'
+      >
+        Enter a board game title
       </label>
+      <input
+        id='game-input'
+        type='text'
+        value={gameInput}
+        placeholder='Enter board game'
+        onChange={(e) => setGameInput(e.target.value)}
+      />
       <button>Search</button>
     </form>
   );

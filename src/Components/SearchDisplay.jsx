@@ -2,12 +2,17 @@ import React from 'react';
 import './SearchDisplay.scss';
 import { FaPlus, FaHeart } from 'react-icons/fa';
 import PaginationDisplay from './PaginationDisplay';
+import GameForm from './GameForm';
 
-const SearchDisplay = ({ searchResults, addToCollection, addToWishlist, itemsPerPage, setItemsPerPage, searchCount, setItemOffset }) => {
+const SearchDisplay = ({ searchResults, addToCollection, addToWishlist, itemsPerPage, setItemsPerPage, searchCount, setItemOffset, gameQuery, setGameQuery }) => {
   return (
     <div className='container'>
+      <h2 className='text-center'>Search</h2>
+      <GameForm
+        gameQuery={gameQuery}
+        setGameQuery={setGameQuery}
+      />
       <div className='search-display'>
-        <h2>Search Results</h2>
         {searchCount > 0 && (
           <>
             <PaginationDisplay

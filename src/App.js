@@ -5,7 +5,6 @@ import { getDatabase, ref, push, onValue, remove } from 'firebase/database';
 import { Routes, Route } from 'react-router-dom';
 import './App.scss';
 import SearchDisplay from './Components/SearchDisplay';
-import GameForm from './Components/GameForm';
 import CollectionDisplay from './Components/CollectionDisplay';
 import NavBar from './Components/NavBar';
 import Home from './Components/Home';
@@ -85,7 +84,6 @@ function App() {
           path='/search'
           element={
             <>
-              <GameForm setGameQuery={setGameQuery} />
               <SearchDisplay
                 searchResults={searchResults}
                 addToCollection={addToCollection}
@@ -94,6 +92,8 @@ function App() {
                 setItemsPerPage={setItemsPerPage}
                 searchCount={searchCount}
                 setItemOffset={setItemOffset}
+                gameQuery={gameQuery}
+                setGameQuery={setGameQuery}
               />
             </>
           }
