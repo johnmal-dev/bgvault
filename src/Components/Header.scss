@@ -1,0 +1,16 @@
+@use '../sassPartials/variables' as *;
+
+.header {
+  background-color: $color-4;
+  font-size: 0.9em;
+  color: $white;
+  text-align: center;
+  padding-block: 5px;
+  a {
+    color: inherit;
+    text-decoration: underline;
+  }
+  @media (max-width: $mq-mobile-sm) {
+    font-size: 0.65rem;
+  }
+}

@@ -6,10 +6,11 @@ import { Routes, Route } from 'react-router-dom';
 import './App.scss';
 import SearchDisplay from './Components/SearchDisplay';
 import CollectionDisplay from './Components/CollectionDisplay';
-import NavBar from './Components/NavBar';
 import Home from './Components/Home';
 import Wishlist from './Components/Wishlist';
 import CollectionItem from './Components/CollectionItem';
+import Footer from './Components/Footer';
+import Header from './Components/Header';
 
 function App() {
   const [searchResults, setSearchResults] = useState([]);
@@ -74,8 +75,7 @@ function App() {
 
   return (
     <div className='App'>
-      <h1 className='text-center'>Board Game Vault</h1>
-      <NavBar />
+      <Header />
       <Routes>
         <Route
           path='/'
@@ -120,6 +120,7 @@ function App() {
           element={<Wishlist />}
         />
       </Routes>
+      <Footer />
     </div>
   );
 }
