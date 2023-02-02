@@ -50,16 +50,19 @@ td:nth-child(2) {
   }
 }
 
-// hide extra columns for smaller screens
-@media (max-width: $mq-tablet) {
-  th:nth-child(n + 3):nth-child(-n + 6),
-  td:nth-child(n + 3):nth-child(-n + 6) {
-    display: none;
+.search-display {
+  // hide extra columns for tablets and smaller
+  @media (max-width: $mq-tablet) {
+    th:nth-child(n + 3):nth-child(-n + 6),
+    td:nth-child(n + 3):nth-child(-n + 6) {
+      display: none;
+    }
   }
-}
 
-@media (max-width: $mq-mobile-lg) {
-  .game-description {
-    display: none;
+  // hide game description on lg mobile screens
+  @media (max-width: $mq-mobile-lg) {
+    .game-description {
+      display: none;
+    }
   }
 }
