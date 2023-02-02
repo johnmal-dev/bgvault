@@ -1,12 +1,64 @@
-.search-list {
+@use '../sassPartials/variables' as *;
+
+.search-display {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  .search-card {
-    border: 1px solid red;
-    display: flex;
-    .img-container {
-      width: 250px;
-    }
+  justify-content: center;
+  align-items: center;
+  @media (max-width: $mq-desktop-sm) {
+    font-size: 0.8rem;
+  }
+  @media (max-width: $mq-tablet) {
+    font-size: 0.7rem;
+  }
+  @media (max-width: $mq-mobile-lg) {
+    font-size: 0.6rem;
+  }
+  @media (max-width: $mq-mobile-sm) {
+    font-size: 0.5rem;
+  }
+}
+
+.search-table {
+  text-align: center;
+}
+
+.game-info {
+  text-align: left;
+  @media (max-width: $mq-mobile-lg) {
+    text-align: center;
+  }
+}
+
+.game-img-container {
+  width: 100px;
+  min-width: 100px;
+  height: 100px;
+  img {
+    width: 90%;
+    aspect-ratio: 1;
+  }
+}
+
+// set game info column width
+th:nth-child(2),
+td:nth-child(2) {
+  width: 400px;
+  @media (max-width: $mq-tablet) {
+    width: auto;
+  }
+}
+
+// hide extra columns for smaller screens
+@media (max-width: $mq-tablet) {
+  th:nth-child(n + 3):nth-child(-n + 6),
+  td:nth-child(n + 3):nth-child(-n + 6) {
+    display: none;
+  }
+}
+
+@media (max-width: $mq-mobile-lg) {
+  .game-description {
+    display: none;
   }
 }

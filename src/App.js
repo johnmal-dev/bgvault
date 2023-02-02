@@ -22,6 +22,7 @@ function App() {
       }
       setCollection(arr);
     });
+    getGames('Catan');
   }, []);
 
   const getGames = (query) => {
