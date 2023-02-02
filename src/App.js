@@ -2,10 +2,14 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import firebase from './database/firebase';
 import { getDatabase, ref, push, onValue, remove } from 'firebase/database';
+import { Routes, Route } from 'react-router-dom';
 import './App.scss';
 import SearchDisplay from './Components/SearchDisplay';
 import GameForm from './Components/GameForm';
 import CollectionDisplay from './Components/CollectionDisplay';
+import NavBar from './Components/NavBar';
+import Home from './Components/Home';
+import Wishlist from './Components/Wishlist';
 
 function App() {
   const [searchResults, setSearchResults] = useState([]);
@@ -71,24 +75,43 @@ function App() {
   return (
     <div className='App'>
       <h1 className='text-center'>Board Game Vault</h1>
-      <GameForm setGameQuery={setGameQuery} />
-      {searchResults.length > 0 && (
-        <>
-          <SearchDisplay
-            searchResults={searchResults}
-            addToCollection={addToCollection}
-            addToWishlist={addToWishlist}
-            itemsPerPage={itemsPerPage}
-            setItemsPerPage={setItemsPerPage}
-            searchCount={searchCount}
-            setItemOffset={setItemOffset}
-          />
-        </>
-      )}
-      <CollectionDisplay
-        collection={collection}
-        removeFromCollection={removeFromCollection}
-      />
+      <NavBar />
+      <Routes>
+        <Route
+          path='/'
+          element={<Home />}
+        />
+        <Route
+          path='/search'
+          element={
+            <>
+              <GameForm setGameQuery={setGameQuery} />
+              <SearchDisplay
+                searchResults={searchResults}
+                addToCollection={addToCollection}
+                addToWishlist={addToWishlist}
+                itemsPerPage={itemsPerPage}
+                setItemsPerPage={setItemsPerPage}
+                searchCount={searchCount}
+                setItemOffset={setItemOffset}
+              />
+            </>
+          }
+        />
+        <Route
+          path='/collection'
+          element={
+            <CollectionDisplay
+              collection={collection}
+              removeFromCollection={removeFromCollection}
+            />
+          }
+        />
+        <Route
+          path='/wishlist'
+          element={<Wishlist />}
+        />
+      </Routes>
     </div>
   );
 }
