@@ -1,12 +1,19 @@
 import React from 'react';
 import './SearchDisplay.scss';
 import { FaPlus, FaHeart } from 'react-icons/fa';
+import PaginationDisplay from './PaginationDisplay';
 
-const SearchDisplay = ({ searchResults, addToCollection, addToWishlist }) => {
+const SearchDisplay = ({ searchResults, addToCollection, addToWishlist, itemsPerPage, setItemsPerPage, searchCount, setItemOffset }) => {
   return (
     <div className='container'>
       <div className='search-display'>
         <h2>Search Results</h2>
+        <PaginationDisplay
+          itemsPerPage={itemsPerPage}
+          setItemsPerPage={setItemsPerPage}
+          searchCount={searchCount}
+          setItemOffset={setItemOffset}
+        />
         <table className='search-table'>
           <thead>
             <tr>
@@ -72,6 +79,12 @@ const SearchDisplay = ({ searchResults, addToCollection, addToWishlist }) => {
             })}
           </tbody>
         </table>
+        <PaginationDisplay
+          itemsPerPage={itemsPerPage}
+          setItemsPerPage={setItemsPerPage}
+          searchCount={searchCount}
+          setItemOffset={setItemOffset}
+        />
       </div>
     </div>
   );

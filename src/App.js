@@ -6,7 +6,6 @@ import './App.scss';
 import SearchDisplay from './Components/SearchDisplay';
 import GameForm from './Components/GameForm';
 import CollectionDisplay from './Components/CollectionDisplay';
-import PaginationDisplay from './Components/PaginationDisplay';
 
 function App() {
   const [searchResults, setSearchResults] = useState([]);
@@ -75,18 +74,10 @@ function App() {
       <GameForm setGameQuery={setGameQuery} />
       {searchResults.length > 0 && (
         <>
-          <PaginationDisplay
-            itemsPerPage={itemsPerPage}
-            setItemsPerPage={setItemsPerPage}
-            searchCount={searchCount}
-            setItemOffset={setItemOffset}
-          />
           <SearchDisplay
             searchResults={searchResults}
             addToCollection={addToCollection}
             addToWishlist={addToWishlist}
-          />
-          <PaginationDisplay
             itemsPerPage={itemsPerPage}
             setItemsPerPage={setItemsPerPage}
             searchCount={searchCount}
