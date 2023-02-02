@@ -10,9 +10,10 @@ const GameForm = ({ setGameQuery }) => {
     <form
       className='game-form'
       onSubmit={handleSubmit}
+      className='text-center'
     >
       <label>
-        Enter a board game title:
+        Enter a board game title:{' '}
         <input
           type='text'
           value={gameInput}

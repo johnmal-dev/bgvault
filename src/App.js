@@ -68,7 +68,7 @@ function App() {
 
   return (
     <div className='App'>
-      <h1>Board Game Vault</h1>
+      <h1 className='text-center'>Board Game Vault</h1>
       <GameForm setGameQuery={setGameQuery} />
       {searchResults.length > 0 && (
         <>
