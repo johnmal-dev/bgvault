@@ -1,31 +1,39 @@
 import React, { useState, useEffect, useId } from 'react';
 import './PaginationDisplay.scss';
 
-const PaginationDisplay = ({ itemsPerPage, setItemsPerPage, searchCount, setItemOffset, searchResults }) => {
+const PaginationDisplay = ({ itemsPerPage, setItemsPerPage, searchCount, setItemOffset }) => {
   const [pages, setPages] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
   const selectId = useId();
 
   useEffect(() => {
     const pageCount = Math.ceil(searchCount / itemsPerPage);
     const newPages = [];
 
+    const handlePageClick = (pageIndex) => {
+      const newOffset = pageIndex * itemsPerPage;
+      setCurrentPage(pageIndex + 1);
+      setItemOffset(newOffset);
+    };
+
     for (let i = 0; i < pageCount; i++) {
-      const currentPage = i + 1;
+      const pageNumber = i + 1;
       newPages.push(
         <div
           key={i}
           onClick={() => handlePageClick(i)}
+          style={{ textDecoration: currentPage === pageNumber && 'underline' }}
         >
-          {currentPage}
+          {pageNumber}
         </div>
       );
     }
     setPages(newPages);
-  }, [itemsPerPage, searchResults]);
+  }, [itemsPerPage, searchCount, setItemOffset, currentPage]);
 
-  const handlePageClick = (pageIndex) => {
-    const newOffset = pageIndex * itemsPerPage;
-    setItemOffset(newOffset);
+  const handleItemsPerPageClick = (e) => {
+    setItemOffset(0);
+    setItemsPerPage(e.target.value);
   };
 
   return (
@@ -38,7 +46,7 @@ const PaginationDisplay = ({ itemsPerPage, setItemsPerPage, searchCount, setItem
             <select
               name='itemsPerPage'
               id={selectId}
-              onChange={(e) => setItemsPerPage(e.target.value)}
+              onChange={handleItemsPerPageClick}
               value={itemsPerPage}
             >
               <option value='25'>25</option>

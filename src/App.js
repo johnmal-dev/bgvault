@@ -12,7 +12,7 @@ function App() {
   const [searchResults, setSearchResults] = useState([]);
   const [collection, setCollection] = useState([]);
   const [searchCount, setSearchCount] = useState(0);
-  const [gameInput, setGameInput] = useState('');
+  const [gameQuery, setGameQuery] = useState('');
   const [itemsPerPage, setItemsPerPage] = useState(25);
   const [itemOffset, setItemOffset] = useState(0);
 
@@ -30,25 +30,24 @@ function App() {
   }, []);
 
   useEffect(() => {
-    if (gameInput) getGames(gameInput);
-  }, [itemOffset, itemsPerPage]);
-
-  const getGames = (query, offset = itemOffset, limit = itemsPerPage) => {
-    axios({
-      method: 'get',
-      url: 'https://api.boardgameatlas.com/api/search',
-      responseType: 'json',
-      params: {
-        client_id: 'lmhaeyUdQ0',
-        name: query,
-        skip: offset,
-        limit: limit,
-      },
-    }).then((res) => {
-      setSearchCount(res.data.count);
-      setSearchResults(res.data.games);
-    });
-  };
+    const getGames = () => {
+      axios({
+        method: 'get',
+        url: 'https://api.boardgameatlas.com/api/search',
+        responseType: 'json',
+        params: {
+          client_id: 'lmhaeyUdQ0',
+          name: gameQuery,
+          skip: itemOffset,
+          limit: itemsPerPage,
+        },
+      }).then((res) => {
+        setSearchCount(res.data.count);
+        setSearchResults(res.data.games);
+      });
+    };
+    if (gameQuery) getGames();
+  }, [itemOffset, itemsPerPage, gameQuery]);
 
   const addToCollection = (game) => {
     const db = getDatabase(firebase);
@@ -70,11 +69,7 @@ function App() {
   return (
     <div className='App'>
       <h1>Board Game Vault</h1>
-      <GameForm
-        getGames={getGames}
-        gameInput={gameInput}
-        setGameInput={setGameInput}
-      />
+      <GameForm setGameQuery={setGameQuery} />
       {searchResults.length > 0 && (
         <>
           <PaginationDisplay
@@ -82,7 +77,6 @@ function App() {
             setItemsPerPage={setItemsPerPage}
             searchCount={searchCount}
             setItemOffset={setItemOffset}
-            searchResults={searchResults}
           />
           <SearchDisplay
             searchResults={searchResults}
@@ -94,7 +88,6 @@ function App() {
             setItemsPerPage={setItemsPerPage}
             searchCount={searchCount}
             setItemOffset={setItemOffset}
-            searchResults={searchResults}
           />
         </>
       )}

@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-const GameForm = ({ getGames, gameInput, setGameInput }) => {
+const GameForm = ({ setGameQuery }) => {
+  const [gameInput, setGameInput] = useState('');
   const handleSubmit = (e) => {
     e.preventDefault();
-    getGames(gameInput);
+    setGameQuery(gameInput);
   };
   return (
     <form
