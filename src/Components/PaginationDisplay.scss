@@ -18,7 +18,7 @@
         color: blue;
       }
     }
-    @media (max-width: $mq-mobile-lg) {
+    @media (max-width: $mq-tablet) {
       flex-direction: column;
     }
   }
