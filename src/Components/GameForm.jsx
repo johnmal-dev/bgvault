@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 const GameForm = ({ getGames, gameInput, setGameInput }) => {
   const handleSubmit = (e) => {
