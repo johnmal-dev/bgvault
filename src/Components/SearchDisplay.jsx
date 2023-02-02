@@ -23,13 +23,22 @@ const SearchDisplay = ({ searchResults, addToCollection, addToWishlist }) => {
           <tbody>
             {searchResults.map((game) => {
               return (
-                <tr key={game.id} className='search-row'>
+                <tr
+                  key={game.id}
+                  className='search-row'
+                >
                   <td className='game-img-container'>
-                    <img src={game.images.small} alt={game.name} />
+                    <img
+                      src={game.images.small}
+                      alt={game.name}
+                    />
                   </td>
                   <td className='game-info'>
                     <div>
-                      <a href={game.url} className='bold'>
+                      <a
+                        href={game.url}
+                        className='bold'
+                      >
                         {game.name}
                       </a>{' '}
                       <span className='italic'>({game.year_published})</span>
@@ -42,10 +51,19 @@ const SearchDisplay = ({ searchResults, addToCollection, addToWishlist }) => {
                   <td className='game-votes'>{game.num_user_ratings}</td>
                   <td className='game-price'>{game.price_text}</td>
                   <td className='game-buttons'>
-                    <button className='button' aria-label='add to collection' onClick={() => addToCollection(game)}>
+                    <button
+                      className='button'
+                      aria-label='add to collection'
+                      onClick={() => addToCollection(game)}
+                    >
                       <FaPlus />
                     </button>
-                    <button className='button' aria-label='add to wishlist' disabled onClick={() => addToWishlist(game)}>
+                    <button
+                      className='button'
+                      aria-label='add to wishlist'
+                      disabled
+                      onClick={() => addToWishlist(game)}
+                    >
                       <FaHeart />
                     </button>
                   </td>

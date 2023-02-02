@@ -6,14 +6,19 @@ import './App.scss';
 import SearchDisplay from './Components/SearchDisplay';
 import GameForm from './Components/GameForm';
 import CollectionDisplay from './Components/CollectionDisplay';
+import PaginationDisplay from './Components/PaginationDisplay';
 
 function App() {
   const [searchResults, setSearchResults] = useState([]);
   const [collection, setCollection] = useState([]);
+  const [searchCount, setSearchCount] = useState(0);
+  const [gameInput, setGameInput] = useState('');
+  const [itemsPerPage, setItemsPerPage] = useState(25);
+  const [itemOffset, setItemOffset] = useState(0);
+
   useEffect(() => {
     const database = getDatabase(firebase);
     const collectionRef = ref(database, '/collection');
-    console.log(database, collectionRef);
     onValue(collectionRef, (res) => {
       const data = res.val();
       const arr = [];
@@ -22,10 +27,13 @@ function App() {
       }
       setCollection(arr);
     });
-    getGames('Catan');
   }, []);
 
-  const getGames = (query) => {
+  useEffect(() => {
+    if (gameInput) getGames(gameInput);
+  }, [itemOffset, itemsPerPage]);
+
+  const getGames = (query, offset = itemOffset, limit = itemsPerPage) => {
     axios({
       method: 'get',
       url: 'https://api.boardgameatlas.com/api/search',
@@ -33,8 +41,11 @@ function App() {
       params: {
         client_id: 'lmhaeyUdQ0',
         name: query,
+        skip: offset,
+        limit: limit,
       },
     }).then((res) => {
+      setSearchCount(res.data.count);
       setSearchResults(res.data.games);
     });
   };
@@ -59,9 +70,38 @@ function App() {
   return (
     <div className='App'>
       <h1>Board Game Vault</h1>
-      <GameForm getGames={getGames} />
-      <SearchDisplay searchResults={searchResults} addToCollection={addToCollection} addToWishlist={addToWishlist} />
-      <CollectionDisplay collection={collection} removeFromCollection={removeFromCollection} />
+      <GameForm
+        getGames={getGames}
+        gameInput={gameInput}
+        setGameInput={setGameInput}
+      />
+      {searchResults.length > 0 && (
+        <>
+          <PaginationDisplay
+            itemsPerPage={itemsPerPage}
+            setItemsPerPage={setItemsPerPage}
+            searchCount={searchCount}
+            setItemOffset={setItemOffset}
+            searchResults={searchResults}
+          />
+          <SearchDisplay
+            searchResults={searchResults}
+            addToCollection={addToCollection}
+            addToWishlist={addToWishlist}
+          />
+          <PaginationDisplay
+            itemsPerPage={itemsPerPage}
+            setItemsPerPage={setItemsPerPage}
+            searchCount={searchCount}
+            setItemOffset={setItemOffset}
+            searchResults={searchResults}
+          />
+        </>
+      )}
+      <CollectionDisplay
+        collection={collection}
+        removeFromCollection={removeFromCollection}
+      />
     </div>
   );
 }

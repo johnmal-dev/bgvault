@@ -1,17 +1,22 @@
 import React, { useState } from 'react';
 
-const GameForm = ({ getGames }) => {
-  const [gameInput, setGameInput] = useState('');
-
+const GameForm = ({ getGames, gameInput, setGameInput }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     getGames(gameInput);
   };
   return (
-    <form className='game-form' onSubmit={handleSubmit}>
+    <form
+      className='game-form'
+      onSubmit={handleSubmit}
+    >
       <label>
         Enter a board game title:
-        <input type='text' value={gameInput} onChange={(e) => setGameInput(e.target.value)} />
+        <input
+          type='text'
+          value={gameInput}
+          onChange={(e) => setGameInput(e.target.value)}
+        />
       </label>
       <button>Search</button>
     </form>
