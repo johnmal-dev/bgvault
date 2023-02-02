@@ -30,21 +30,24 @@ function App() {
   }, []);
 
   useEffect(() => {
-    const getGames = () => {
-      axios({
-        method: 'get',
-        url: 'https://api.boardgameatlas.com/api/search',
-        responseType: 'json',
-        params: {
-          client_id: 'lmhaeyUdQ0',
-          name: gameQuery,
-          skip: itemOffset,
-          limit: itemsPerPage,
-        },
-      }).then((res) => {
-        setSearchCount(res.data.count);
+    const getGames = async () => {
+      try {
+        const res = await axios({
+          method: 'get',
+          url: 'https://api.boardgameatlas.com/api/search',
+          responseType: 'json',
+          params: {
+            client_id: 'lmhaeyUdQ0',
+            name: gameQuery,
+            skip: itemOffset,
+            limit: itemsPerPage,
+          },
+        });
+        setSearchCount(Math.min(res.data.count, 1000));
         setSearchResults(res.data.games);
-      });
+      } catch (err) {
+        console.log(err);
+      }
     };
     if (gameQuery) getGames();
   }, [itemOffset, itemsPerPage, gameQuery]);
