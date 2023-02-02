@@ -11,6 +11,7 @@ import Wishlist from './Components/Wishlist';
 import CollectionItem from './Components/CollectionItem';
 import Footer from './Components/Footer';
 import Header from './Components/Header';
+import ErrorPage from './Components/ErrorPage';
 
 function App() {
   const [searchResults, setSearchResults] = useState([]);
@@ -118,6 +119,14 @@ function App() {
         <Route
           path='/wishlist'
           element={<Wishlist />}
+        />
+        <Route
+          path='/error'
+          element={<ErrorPage />}
+        />
+        <Route
+          path='*'
+          element={<ErrorPage />}
         />
       </Routes>
       <Footer />
