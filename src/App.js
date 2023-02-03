@@ -8,7 +8,7 @@ import SearchDisplay from './Components/SearchDisplay';
 import CollectionDisplay from './Components/CollectionDisplay';
 import Home from './Components/Home';
 import Wishlist from './Components/Wishlist';
-import CollectionItem from './Components/CollectionItem';
+import GameDetails from './Components/GameDetails';
 import Footer from './Components/Footer';
 import Header from './Components/Header';
 import ErrorPage from './Components/ErrorPage';
@@ -111,11 +111,11 @@ function App() {
               />
             }
           />
-          <Route
-            path=':gameId'
-            element={<CollectionItem />}
-          />
         </Route>
+        <Route
+          path='/gameDetails/:gameId'
+          element={<GameDetails />}
+        />
 
         <Route
           path='/wishlist'

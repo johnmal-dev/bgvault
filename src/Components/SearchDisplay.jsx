@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { FaPlus, FaHeart } from 'react-icons/fa';
 import PaginationDisplay from './PaginationDisplay';
@@ -62,12 +63,12 @@ const SearchDisplay = ({ searchResults, addToCollection, addToWishlist, itemsPer
                       </td>
                       <td className='game-info'>
                         <div>
-                          <a
-                            href={url}
+                          <Link
+                            to={`/gameDetails/${id}`}
                             className='bold'
                           >
                             {name}
-                          </a>{' '}
+                          </Link>{' '}
                           <span className='italic'>({year_published})</span>
                         </div>
                         <div className='game-description'>{description_preview.split(' ').length <= 20 ? description_preview : description_preview.split(' ').slice(0, 20).join(' ') + '...'}</div>

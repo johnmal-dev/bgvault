@@ -10,6 +10,7 @@ const CollectionDisplay = ({ collection, removeFromCollection }) => {
         <div className='collection-list'>
           {collection.map((game) => {
             const {
+              id,
               key,
               name,
               images: { small: image },
@@ -27,7 +28,7 @@ const CollectionDisplay = ({ collection, removeFromCollection }) => {
                 </div>
                 <div className='game-info'>
                   <div className='bold text-center'>{name}</div>
-                  <Link to={key}>
+                  <Link to={`/gameDetails/${id}`}>
                     <button className='button'>Details</button>
                   </Link>
                 </div>
