@@ -48,7 +48,7 @@ function App() {
             limit: itemsPerPage,
           },
         });
-        setSearchCount(Math.min(res.data.count, 1000));
+        setSearchCount(Math.min(res.data.count, 500));
         setSearchResults(res.data.games);
       } catch (err) {
         console.log(err);
