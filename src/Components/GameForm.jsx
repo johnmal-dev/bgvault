@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import './GameForm.scss';
 
 const GameForm = ({ setGameQuery, gameQuery }) => {
   const [gameInput, setGameInput] = useState(gameQuery);

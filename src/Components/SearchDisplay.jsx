@@ -1,7 +1,5 @@
 import React from 'react';
 import { toast } from 'react-toastify';
-import './SearchDisplay.scss';
-import 'react-toastify/dist/ReactToastify.css';
 import { FaPlus, FaHeart } from 'react-icons/fa';
 import PaginationDisplay from './PaginationDisplay';
 import GameForm from './GameForm';

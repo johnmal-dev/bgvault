@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useId } from 'react';
-import './PaginationDisplay.scss';
 
 const PaginationDisplay = ({ itemsPerPage, setItemsPerPage, searchCount, setItemOffset }) => {
   const [pages, setPages] = useState([]);

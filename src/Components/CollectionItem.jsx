@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { useParams, Navigate } from 'react-router-dom';
 import { getDatabase, ref, onValue } from 'firebase/database';
 import firebase from '../database/firebase';
-import './CollectionItem.scss';
 
 const CollectionItem = () => {
   const [game, setGame] = useState({});

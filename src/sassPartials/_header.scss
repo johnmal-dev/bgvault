@@ -1,12 +1,11 @@
-@use '../sassPartials/variables' as *;
+@use 'variables' as *;
 
-.footer {
-  background-color: $color-1;
+.header {
+  background-color: $color-4;
   font-size: 0.9em;
   color: $white;
   text-align: center;
   padding-block: 5px;
-  margin-top: auto;
   a {
     color: inherit;
     text-decoration: underline;
