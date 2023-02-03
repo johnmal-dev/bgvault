@@ -40,7 +40,6 @@ const SearchDisplay = ({ searchResults, addToCollection, addToWishlist, itemsPer
                   const {
                     id,
                     name,
-                    url,
                     year_published,
                     description_preview,
                     players,
