@@ -38,34 +38,47 @@ const SearchDisplay = ({ searchResults, addToCollection, addToWishlist, itemsPer
               </thead>
               <tbody>
                 {searchResults.map((game) => {
+                  const {
+                    id,
+                    name,
+                    url,
+                    year_published,
+                    description_preview,
+                    players,
+                    playtime,
+                    average_user_rating,
+                    num_user_ratings,
+                    price_text,
+                    images: { small: image },
+                  } = game;
                   return (
                     <tr
-                      key={game.id}
+                      key={id}
                       className='search-row'
                     >
                       <td className='game-img-container'>
                         <img
-                          src={game.images.small}
-                          alt={game.name}
+                          src={image}
+                          alt={name}
                         />
                       </td>
                       <td className='game-info'>
                         <div>
                           <a
-                            href={game.url}
+                            href={url}
                             className='bold'
                           >
-                            {game.name}
+                            {name}
                           </a>{' '}
-                          <span className='italic'>({game.year_published})</span>
+                          <span className='italic'>({year_published})</span>
                         </div>
-                        <div className='game-description'>{game.description_preview.split(' ').length <= 20 ? game.description_preview : game.description_preview.split(' ').slice(0, 20).join(' ') + '...'}</div>
+                        <div className='game-description'>{description_preview.split(' ').length <= 20 ? description_preview : description_preview.split(' ').slice(0, 20).join(' ') + '...'}</div>
                       </td>
-                      <td className='game-players'>{game.players}</td>
-                      <td className='game-playtime'>{game.playtime}</td>
-                      <td className='game-rating'>{game.average_user_rating.toFixed(2)}</td>
-                      <td className='game-votes'>{game.num_user_ratings}</td>
-                      <td className='game-price'>{game.price_text}</td>
+                      <td className='game-players'>{players}</td>
+                      <td className='game-playtime'>{playtime}</td>
+                      <td className='game-rating'>{average_user_rating.toFixed(2)}</td>
+                      <td className='game-votes'>{num_user_ratings}</td>
+                      <td className='game-price'>{price_text}</td>
                       <td className='game-buttons'>
                         <button
                           className='button'

@@ -11,27 +11,32 @@ const CollectionDisplay = ({ collection, removeFromCollection }) => {
         <h2>Collection</h2>
         <div className='collection-list'>
           {collection.map((game) => {
+            const {
+              key,
+              name,
+              images: { small: image },
+            } = game;
             return (
               <div
-                key={game.key}
+                key={key}
                 className='collection-card'
               >
                 <div className='img-container'>
                   <img
-                    src={game.images.small}
-                    alt={game.name}
+                    src={image}
+                    alt={name}
                   />
                 </div>
                 <div className='game-info'>
-                  <div className='bold text-center'>{game.name}</div>
-                  <Link to={game.key}>
+                  <div className='bold text-center'>{name}</div>
+                  <Link to={key}>
                     <button className='button'>Details</button>
                   </Link>
                 </div>
                 <button
                   onClick={() => {
-                    removeFromCollection(game.key);
-                    toast(`${game.name} has been removed from your collection.`);
+                    removeFromCollection(key);
+                    toast(`${name} has been removed from your collection.`);
                   }}
                 >
                   Remove
