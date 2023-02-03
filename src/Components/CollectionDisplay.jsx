@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import './CollectionDisplay.scss';
+import 'react-toastify/dist/ReactToastify.css';
 
 const CollectionDisplay = ({ collection, removeFromCollection }) => {
   return (
@@ -26,7 +28,14 @@ const CollectionDisplay = ({ collection, removeFromCollection }) => {
                     <button className='button'>Details</button>
                   </Link>
                 </div>
-                <button onClick={() => removeFromCollection(game.key)}>Remove</button>
+                <button
+                  onClick={() => {
+                    removeFromCollection(game.key);
+                    toast(`${game.name} has been removed from your collection.`);
+                  }}
+                >
+                  Remove
+                </button>
               </div>
             );
           })}

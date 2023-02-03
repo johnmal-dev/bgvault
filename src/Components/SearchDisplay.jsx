@@ -1,5 +1,7 @@
 import React from 'react';
+import { toast } from 'react-toastify';
 import './SearchDisplay.scss';
+import 'react-toastify/dist/ReactToastify.css';
 import { FaPlus, FaHeart } from 'react-icons/fa';
 import PaginationDisplay from './PaginationDisplay';
 import GameForm from './GameForm';
@@ -68,7 +70,10 @@ const SearchDisplay = ({ searchResults, addToCollection, addToWishlist, itemsPer
                         <button
                           className='button'
                           aria-label='add to collection'
-                          onClick={() => addToCollection(game)}
+                          onClick={() => {
+                            addToCollection(game);
+                            toast(`${game.name} has been added to your collection!`);
+                          }}
                         >
                           <FaPlus />
                         </button>
