@@ -1,6 +1,10 @@
 @use 'variables' as *;
 
 .search-display {
+  background-color: $color-3;
+}
+
+.search-results {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -22,6 +26,7 @@
 
 .search-table {
   text-align: center;
+  background-color: $white;
 }
 
 .game-info {

@@ -1,6 +1,9 @@
+@use 'variables' as *;
+
 .collection-item .container {
   border: 1px solid black;
-  border-radius: 5px;
+  border-radius: $border-radius;
+  padding: 5px;
   display: flex;
   flex-direction: column;
   justify-content: center;

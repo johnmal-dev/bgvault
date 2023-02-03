@@ -1,0 +1,39 @@
+@use './variables' as *;
+
+.home {
+  background-color: $color-3;
+  flex-grow: 1;
+  .container {
+    margin-bottom: 30px;
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 30px;
+      .card {
+        background-color: $color-2;
+        border-radius: $border-radius;
+        padding: 10px;
+        display: flex;
+        justify-content: flex-start;
+        align-items: baseline;
+        height: 250px;
+        h3 {
+          align-self: flex-end;
+          margin: 0;
+        }
+        &.search {
+          background-color: yellow;
+        }
+        &.collection {
+          background-color: blue;
+        }
+        &.wishlist {
+          background-color: red;
+        }
+        &.search {
+          background-color: pink;
+        }
+      }
+    }
+  }
+}
