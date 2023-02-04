@@ -10,8 +10,11 @@
       grid-template-columns: repeat(2, 1fr);
       gap: 30px;
       .card {
-        background-color: $color-2;
+        font-size: 1.2rem;
+        color: $white;
+        text-shadow: $box-shadow;
         border-radius: $border-radius;
+        box-shadow: $box-shadow;
         padding: 10px;
         display: flex;
         justify-content: flex-start;
@@ -22,15 +25,24 @@
           margin: 0;
         }
         &.search {
-          background-color: yellow;
+          background: url(../images/christopher-paul-high-fwRMK19zavc-unsplash.jpg);
+          background-position: center;
+          background-size: cover;
         }
         &.collection {
-          background-color: blue;
+          background: url(../images/joshua-hoehne-c-jTL24e50c-unsplash.jpg);
+          background-position: center;
+          background-size: cover;
         }
         &.wishlist {
-          background-color: red;
+          background: url(../images/kathy-marsh-MkoTQg_5xjw-unsplash.jpg);
+          background-position: center;
+          background-size: cover;
         }
-        &.search {
+        &.randomize {
+          background: url(../images/robert-coelho-laNNTAth9vs-unsplash.jpg);
+          background-position: center;
+          background-size: cover;
           background-color: pink;
         }
       }
