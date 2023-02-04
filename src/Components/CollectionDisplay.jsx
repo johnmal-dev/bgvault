@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { toast } from 'react-toastify';
 
 const CollectionDisplay = ({ collection, removeFromCollection }) => {
   return (
@@ -35,8 +34,7 @@ const CollectionDisplay = ({ collection, removeFromCollection }) => {
                 <button
                   className='button'
                   onClick={() => {
-                    removeFromCollection(key);
-                    toast(`${name} has been removed from your collection.`);
+                    removeFromCollection(key, name);
                   }}
                 >
                   Remove

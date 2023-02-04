@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { toast } from 'react-toastify';
 import { FaPlus, FaHeart } from 'react-icons/fa';
 import PaginationDisplay from './PaginationDisplay';
 import GameForm from './GameForm';
@@ -84,7 +83,6 @@ const SearchDisplay = ({ searchResults, addToCollection, addToWishlist, itemsPer
                             aria-label='add to collection'
                             onClick={() => {
                               addToCollection(game);
-                              toast(`${game.name} has been added to your collection!`);
                             }}
                           >
                             <FaPlus />

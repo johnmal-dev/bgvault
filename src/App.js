@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import firebase from './database/firebase';
-import { getDatabase, ref, push, onValue, remove } from 'firebase/database';
+import { getDatabase, ref, push, onValue, update } from 'firebase/database';
 import { Routes, Route } from 'react-router-dom';
 import './App.scss';
 import SearchDisplay from './Components/SearchDisplay';
@@ -12,7 +12,7 @@ import GameDetails from './Components/GameDetails';
 import Footer from './Components/Footer';
 import Header from './Components/Header';
 import ErrorPage from './Components/ErrorPage';
-import { ToastContainer } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
 
 function App() {
   const [searchResults, setSearchResults] = useState([]);
@@ -26,6 +26,7 @@ function App() {
     const database = getDatabase(firebase);
     const collectionRef = ref(database, '/collection');
     onValue(collectionRef, (res) => {
+      console.log(res);
       const data = res.val();
       const arr = [];
       for (let key in data) {
@@ -61,7 +62,14 @@ function App() {
   const addToCollection = (game) => {
     const db = getDatabase(firebase);
     const collectionRef = ref(db, '/collection');
-    push(collectionRef, game);
+    const newGameKey = push(collectionRef).key;
+    update(collectionRef, { [newGameKey]: game })
+      .then(() => {
+        toast(`${game.name} has been added to your collection!`);
+      })
+      .catch((err) => {
+        toast(`Database Error: ${err}`);
+      });
   };
 
   const addToWishlist = (game) => {
@@ -69,10 +77,16 @@ function App() {
     console.log('add to wishlist');
   };
 
-  const removeFromCollection = (key) => {
+  const removeFromCollection = (key, gameName) => {
     const db = getDatabase(firebase);
-    const gameRef = ref(db, `/collection/${key}`);
-    remove(gameRef);
+    const collectionRef = ref(db, '/collection');
+    update(collectionRef, { [key]: null })
+      .then(() => {
+        toast(`${gameName} has been removed from your collection!`);
+      })
+      .catch((err) => {
+        toast(`Database Error: ${err}`);
+      });
   };
 
   return (
