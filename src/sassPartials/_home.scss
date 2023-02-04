@@ -9,6 +9,9 @@
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 30px;
+      @media (max-width: $mq-mobile-lg) {
+        grid-template-columns: 1fr;
+      }
       .card {
         font-size: 1.2rem;
         color: $white;
@@ -20,17 +23,20 @@
         justify-content: flex-start;
         align-items: baseline;
         height: 250px;
+        @media (max-width: $mq-mobile-lg) {
+          height: 200px;
+        }
         h3 {
           align-self: flex-end;
           margin: 0;
         }
         &.search {
-          background: url(../images/christopher-paul-high-fwRMK19zavc-unsplash.jpg);
+          background: url(../images/joshua-hoehne-c-jTL24e50c-unsplash.jpg);
           background-position: center;
           background-size: cover;
         }
         &.collection {
-          background: url(../images/joshua-hoehne-c-jTL24e50c-unsplash.jpg);
+          background: url(../images/christopher-paul-high-fwRMK19zavc-unsplash.jpg);
           background-position: center;
           background-size: cover;
         }

@@ -1,3 +1,5 @@
+@use '../sassPartials/variables' as *;
+
 .App {
   min-height: 100vh;
   display: flex;
@@ -30,6 +32,7 @@ a {
   justify-content: center;
   align-items: center;
   margin: 5px;
+  border-radius: $border-radius;
 }
 
 button:not([disabled]) {

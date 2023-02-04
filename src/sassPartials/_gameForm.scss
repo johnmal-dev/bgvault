@@ -1,3 +1,22 @@
+@use 'variables' as *;
+
 .game-form {
   margin-block: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @media (max-width: $mq-mobile-lg) {
+    flex-direction: column;
+    .game-input,
+    .button {
+      width: 90%;
+      text-align: center;
+    }
+  }
+  .game-input,
+  .button {
+    border-radius: $border-radius;
+    line-height: 2rem;
+    padding: 2px 5px;
+  }
 }

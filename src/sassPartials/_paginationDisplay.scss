@@ -2,13 +2,14 @@
 
 .pagination {
   .container {
-    margin-bottom: 20px;
+    margin-block: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 25px;
     .page-numbers {
       display: flex;
+      flex-wrap: wrap;
       width: 100%;
       gap: 20px;
       justify-content: center;

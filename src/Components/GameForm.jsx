@@ -18,13 +18,14 @@ const GameForm = ({ setGameQuery, gameQuery }) => {
         Enter a board game title
       </label>
       <input
+        className='game-input'
         id='game-input'
         type='text'
         value={gameInput}
         placeholder='Enter board game'
         onChange={(e) => setGameInput(e.target.value)}
       />
-      <button>Search</button>
+      <button className='button'>Search</button>
     </form>
   );
 };

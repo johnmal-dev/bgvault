@@ -33,6 +33,7 @@ const CollectionDisplay = ({ collection, removeFromCollection }) => {
                   </Link>
                 </div>
                 <button
+                  className='button'
                   onClick={() => {
                     removeFromCollection(key);
                     toast(`${name} has been removed from your collection.`);
