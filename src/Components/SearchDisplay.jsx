@@ -55,10 +55,15 @@ const SearchDisplay = ({ searchResults, addToCollection, addToWishlist, itemsPer
                         className='search-row'
                       >
                         <td className='game-img-container'>
-                          <img
-                            src={image}
-                            alt={name}
-                          />
+                          <Link
+                            to={`/gameDetails/${id}`}
+                            className='bold'
+                          >
+                            <img
+                              src={image}
+                              alt={name}
+                            />
+                          </Link>
                         </td>
                         <td className='game-info'>
                           <div>
