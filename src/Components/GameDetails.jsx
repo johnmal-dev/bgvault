@@ -42,7 +42,7 @@ const GameDetails = () => {
         />
       )}
       {Object.keys(game).length > 0 && (
-        <div className='collection-item'>
+        <div className='game-details'>
           <div className='container'>
             <div className='img-container'>
               <img
