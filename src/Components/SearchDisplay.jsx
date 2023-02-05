@@ -13,6 +13,12 @@ const SearchDisplay = ({ searchResults, addToCollection, addToWishlist, itemsPer
           gameQuery={gameQuery}
           setGameQuery={setGameQuery}
         />
+        <button
+          className='button'
+          onClick={() => setGameQuery('game')}
+        >
+          What's Popular?
+        </button>
         <div className='search-results'>
           {searchCount > 0 && (
             <>
