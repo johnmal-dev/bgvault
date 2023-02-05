@@ -90,7 +90,6 @@ const SearchDisplay = ({ searchResults, addToCollection, addToWishlist, itemsPer
                           <button
                             className='button'
                             aria-label='add to wishlist'
-                            disabled
                             onClick={() => addToWishlist(game)}
                           >
                             <FaHeart />

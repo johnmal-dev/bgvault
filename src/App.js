@@ -7,7 +7,7 @@ import './App.scss';
 import SearchDisplay from './Components/SearchDisplay';
 import CollectionDisplay from './Components/CollectionDisplay';
 import Home from './Components/Home';
-import Wishlist from './Components/Wishlist';
+import Wishlist from './Components/WishlistDisplay';
 import GameDetails from './Components/GameDetails';
 import Footer from './Components/Footer';
 import Header from './Components/Header';
@@ -17,6 +17,7 @@ import { ToastContainer, toast } from 'react-toastify';
 function App() {
   const [searchResults, setSearchResults] = useState([]);
   const [collection, setCollection] = useState([]);
+  const [wishlist, setWishlist] = useState([]);
   const [searchCount, setSearchCount] = useState(0);
   const [gameQuery, setGameQuery] = useState('');
   const [itemsPerPage, setItemsPerPage] = useState(25);
@@ -25,14 +26,22 @@ function App() {
   useEffect(() => {
     const database = getDatabase(firebase);
     const collectionRef = ref(database, '/collection');
+    const wishlistRef = ref(database, '/wishlist');
     onValue(collectionRef, (res) => {
-      console.log(res);
       const data = res.val();
       const arr = [];
       for (let key in data) {
         arr.push({ key, ...data[key] });
       }
       setCollection(arr);
+    });
+    onValue(wishlistRef, (res) => {
+      const data = res.val();
+      const arr = [];
+      for (let key in data) {
+        arr.push({ key, ...data[key] });
+      }
+      setWishlist(arr);
     });
   }, []);
 
@@ -73,8 +82,16 @@ function App() {
   };
 
   const addToWishlist = (game) => {
-    // TODO
-    console.log('add to wishlist');
+    const db = getDatabase(firebase);
+    const wishlistRef = ref(db, '/wishlist');
+    const newGameKey = push(wishlistRef).key;
+    update(wishlistRef, { [newGameKey]: game })
+      .then(() => {
+        toast(`${game.name} has been added to your wishlist!`);
+      })
+      .catch((err) => {
+        toast(`Database Error: ${err}`);
+      });
   };
 
   const removeFromCollection = (key, gameName) => {
@@ -83,6 +100,18 @@ function App() {
     update(collectionRef, { [key]: null })
       .then(() => {
         toast(`${gameName} has been removed from your collection!`);
+      })
+      .catch((err) => {
+        toast(`Database Error: ${err}`);
+      });
+  };
+
+  const removeFromWishlist = (key, gameName) => {
+    const db = getDatabase(firebase);
+    const wishlistRef = ref(db, '/wishlist');
+    update(wishlistRef, { [key]: null })
+      .then(() => {
+        toast(`${gameName} has been removed from your wishlist!`);
       })
       .catch((err) => {
         toast(`Database Error: ${err}`);
@@ -115,17 +144,15 @@ function App() {
             </>
           }
         />
-        <Route path='/collection'>
-          <Route
-            path=''
-            element={
-              <CollectionDisplay
-                collection={collection}
-                removeFromCollection={removeFromCollection}
-              />
-            }
-          />
-        </Route>
+        <Route
+          path='/collection'
+          element={
+            <CollectionDisplay
+              collection={collection}
+              removeFromCollection={removeFromCollection}
+            />
+          }
+        />
         <Route
           path='/gameDetails/:gameId'
           element={<GameDetails />}
@@ -133,7 +160,12 @@ function App() {
 
         <Route
           path='/wishlist'
-          element={<Wishlist />}
+          element={
+            <Wishlist
+              wishlist={wishlist}
+              removeFromWishlist={removeFromWishlist}
+            />
+          }
         />
         <Route
           path='/error'
