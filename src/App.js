@@ -98,7 +98,7 @@ function App() {
         />
         <Route
           path='/gameDetails/:gameId'
-          element={<GameDetails isInCollection={isInCollection} />}
+          element={<GameDetails />}
         />
 
         <Route
