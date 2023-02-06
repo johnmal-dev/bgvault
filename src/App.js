@@ -68,16 +68,6 @@ function App() {
     if (gameQuery) getGames();
   }, [itemOffset, itemsPerPage, gameQuery]);
 
-  // check if game is in collection with function isInCollection
-  // use game id, check if collection has a game with that id
-  // return boolean
-  const isInCollection = (gameId) => {
-    return collection.includes((game) => game.id === gameId);
-  };
-
-  // if game is in collection, show button AddToCollection
-  // else, show button RemoveFromCollection
-
   return (
     <div className='App'>
       <Header />
