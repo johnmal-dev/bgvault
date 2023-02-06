@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const GameForm = ({ setGameQuery, gameQuery }) => {
+const SearchForm = ({ setGameQuery, gameQuery }) => {
   const [gameInput, setGameInput] = useState(gameQuery);
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -24,10 +24,11 @@ const GameForm = ({ setGameQuery, gameQuery }) => {
         value={gameInput}
         placeholder='Enter board game'
         onChange={(e) => setGameInput(e.target.value)}
+        required
       />
       <button className='button'>Search</button>
     </form>
   );
 };
 
-export default GameForm;
+export default SearchForm;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PaginationDisplay from './PaginationDisplay';
-import GameForm from './GameForm';
+import SearchForm from './SearchForm';
 import AddToCollectionButton from './AddToCollectionButton';
 import AddToWishlistButton from './AddToWishlistButton';
 import GameDetailsButton from './GameDetailsButton';
@@ -11,7 +11,7 @@ const SearchDisplay = ({ searchResults, itemsPerPage, setItemsPerPage, searchCou
     <div className='search-display'>
       <div className='container'>
         <h2 className='text-center'>Search</h2>
-        <GameForm
+        <SearchForm
           gameQuery={gameQuery}
           setGameQuery={setGameQuery}
         />
