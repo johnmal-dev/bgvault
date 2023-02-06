@@ -1,7 +1,7 @@
 import React from 'react';
 import WishlistCard from './WishlistCard';
 
-const WishlistDisplay = ({ wishlist, removeFromWishlist }) => {
+const WishlistDisplay = ({ wishlist }) => {
   return (
     <div className='wishlist-display text-center'>
       <div className='container'>
@@ -9,12 +9,7 @@ const WishlistDisplay = ({ wishlist, removeFromWishlist }) => {
         <div className='wishlist-list'>
           {wishlist.length > 0 &&
             wishlist.map((game) => {
-              return (
-                <WishlistCard
-                  game={game}
-                  removeFromWishlist={removeFromWishlist}
-                />
-              );
+              return <WishlistCard game={game} />;
             })}
         </div>
       </div>

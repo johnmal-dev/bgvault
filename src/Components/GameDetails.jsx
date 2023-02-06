@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, Navigate } from 'react-router-dom';
 import axios from 'axios';
 
-const GameDetails = () => {
+const GameDetails = ({ isInCollection }) => {
   const [game, setGame] = useState({});
   const [shouldRedirect, setShouldRedirect] = useState(false);
   const { gameId } = useParams();

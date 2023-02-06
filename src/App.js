@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import firebase from './database/firebase';
-import { getDatabase, ref, push, onValue, update } from 'firebase/database';
+import { getDatabase, ref, onValue } from 'firebase/database';
 import { Routes, Route } from 'react-router-dom';
 import './App.scss';
 import SearchDisplay from './Components/SearchDisplay';
@@ -12,7 +12,7 @@ import GameDetails from './Components/GameDetails';
 import Footer from './Components/Footer';
 import Header from './Components/Header';
 import ErrorPage from './Components/ErrorPage';
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 
 function App() {
   const [searchResults, setSearchResults] = useState([]);
@@ -68,55 +68,15 @@ function App() {
     if (gameQuery) getGames();
   }, [itemOffset, itemsPerPage, gameQuery]);
 
-  const addToCollection = (game) => {
-    const db = getDatabase(firebase);
-    const collectionRef = ref(db, '/collection');
-    const newGameKey = push(collectionRef).key;
-    update(collectionRef, { [newGameKey]: game })
-      .then(() => {
-        toast(`${game.name} has been added to your collection!`);
-      })
-      .catch((err) => {
-        toast(`Database Error: ${err}`);
-      });
+  // check if game is in collection with function isInCollection
+  // use game id, check if collection has a game with that id
+  // return boolean
+  const isInCollection = (gameId) => {
+    return collection.includes((game) => game.id === gameId);
   };
 
-  const addToWishlist = (game) => {
-    const db = getDatabase(firebase);
-    const wishlistRef = ref(db, '/wishlist');
-    const newGameKey = push(wishlistRef).key;
-    update(wishlistRef, { [newGameKey]: game })
-      .then(() => {
-        toast(`${game.name} has been added to your wishlist!`);
-      })
-      .catch((err) => {
-        toast(`Database Error: ${err}`);
-      });
-  };
-
-  const removeFromCollection = (key, gameName) => {
-    const db = getDatabase(firebase);
-    const collectionRef = ref(db, '/collection');
-    update(collectionRef, { [key]: null })
-      .then(() => {
-        toast(`${gameName} has been removed from your collection!`);
-      })
-      .catch((err) => {
-        toast(`Database Error: ${err}`);
-      });
-  };
-
-  const removeFromWishlist = (key, gameName) => {
-    const db = getDatabase(firebase);
-    const wishlistRef = ref(db, '/wishlist');
-    update(wishlistRef, { [key]: null })
-      .then(() => {
-        toast(`${gameName} has been removed from your wishlist!`);
-      })
-      .catch((err) => {
-        toast(`Database Error: ${err}`);
-      });
-  };
+  // if game is in collection, show button AddToCollection
+  // else, show button RemoveFromCollection
 
   return (
     <div className='App'>
@@ -132,8 +92,6 @@ function App() {
             <>
               <SearchDisplay
                 searchResults={searchResults}
-                addToCollection={addToCollection}
-                addToWishlist={addToWishlist}
                 itemsPerPage={itemsPerPage}
                 setItemsPerPage={setItemsPerPage}
                 searchCount={searchCount}
@@ -146,26 +104,16 @@ function App() {
         />
         <Route
           path='/collection'
-          element={
-            <CollectionDisplay
-              collection={collection}
-              removeFromCollection={removeFromCollection}
-            />
-          }
+          element={<CollectionDisplay collection={collection} />}
         />
         <Route
           path='/gameDetails/:gameId'
-          element={<GameDetails />}
+          element={<GameDetails isInCollection={isInCollection} />}
         />
 
         <Route
           path='/wishlist'
-          element={
-            <Wishlist
-              wishlist={wishlist}
-              removeFromWishlist={removeFromWishlist}
-            />
-          }
+          element={<Wishlist wishlist={wishlist} />}
         />
         <Route
           path='/error'

@@ -1,10 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import GameDetailsButton from './GameDetailsButton';
+import RemoveFromWishlistButton from './RemoveFromWishlistButton';
 
-const WishlistCard = ({ game, removeFromWishlist }) => {
+const WishlistCard = ({ game }) => {
   const {
     id,
-    key,
     name,
     images: { small: image },
   } = game;
@@ -21,17 +22,10 @@ const WishlistCard = ({ game, removeFromWishlist }) => {
       <div className='game-info'>
         <div className='bold text-center'>{name}</div>
         <Link to={`/gameDetails/${id}`}>
-          <button className='button'>Details</button>
+          <GameDetailsButton />
         </Link>
       </div>
-      <button
-        className='button'
-        onClick={() => {
-          removeFromWishlist(key, name);
-        }}
-      >
-        Remove
-      </button>
+      <RemoveFromWishlistButton game={game} />
     </div>
   );
 };

@@ -1,10 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FaPlus, FaHeart } from 'react-icons/fa';
 import PaginationDisplay from './PaginationDisplay';
 import GameForm from './GameForm';
+import AddToCollectionButton from './AddToCollectionButton';
+import AddToWishlistButton from './AddToWishlistButton';
+import GameDetailsButton from './GameDetailsButton';
 
-const SearchDisplay = ({ searchResults, addToCollection, addToWishlist, itemsPerPage, setItemsPerPage, searchCount, setItemOffset, gameQuery, setGameQuery }) => {
+const SearchDisplay = ({ searchResults, itemsPerPage, setItemsPerPage, searchCount, setItemOffset, gameQuery, setGameQuery }) => {
   return (
     <div className='search-display'>
       <div className='container'>
@@ -89,22 +91,9 @@ const SearchDisplay = ({ searchResults, addToCollection, addToWishlist, itemsPer
                         <td className='game-votes'>{num_user_ratings}</td>
                         <td className='game-price'>{price_text}</td>
                         <td className='game-buttons'>
-                          <button
-                            className='button'
-                            aria-label='add to collection'
-                            onClick={() => {
-                              addToCollection(game);
-                            }}
-                          >
-                            <FaPlus />
-                          </button>
-                          <button
-                            className='button'
-                            aria-label='add to wishlist'
-                            onClick={() => addToWishlist(game)}
-                          >
-                            <FaHeart />
-                          </button>
+                          <GameDetailsButton />
+                          <AddToCollectionButton game={game} />
+                          <AddToWishlistButton game={game} />
                         </td>
                       </tr>
                     );

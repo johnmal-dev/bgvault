@@ -1,7 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import GameDetailsButton from './GameDetailsButton';
+import RemoveFromCollectionButton from './RemoveFromCollectionButton';
 
-const CollectionCard = ({ game, removeFromCollection }) => {
+const CollectionCard = ({ game }) => {
   const {
     id,
     key,
@@ -24,17 +26,10 @@ const CollectionCard = ({ game, removeFromCollection }) => {
       <div className='game-info'>
         <div className='bold text-center'>{name}</div>
         <Link to={`/gameDetails/${id}`}>
-          <button className='button'>Details</button>
+          <GameDetailsButton />
         </Link>
       </div>
-      <button
-        className='button'
-        onClick={() => {
-          removeFromCollection(key, name);
-        }}
-      >
-        Remove
-      </button>
+      <RemoveFromCollectionButton game={game} />
     </div>
   );
 };
