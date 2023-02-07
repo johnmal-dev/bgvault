@@ -13,13 +13,11 @@ const ContextApp = ({ children }) => {
 
   const isInCollection = (gameId) => {
     const res = collection.some((item) => item.id === gameId);
-    console.log(res);
     return res;
   };
 
   const isInWishlist = (gameId) => {
     const res = wishlist.some((item) => item.id === gameId);
-    console.log(res);
     return res;
   };
 

@@ -11,7 +11,12 @@ const WishlistDisplay = () => {
         <div className='wishlist-list'>
           {wishlist.length > 0 &&
             wishlist.map((game) => {
-              return <WishlistCard game={game} />;
+              return (
+                <WishlistCard
+                  game={game}
+                  key={game.key}
+                />
+              );
             })}
         </div>
       </div>
