@@ -16,7 +16,9 @@ const SearchDisplay = () => {
         <SearchForm />
         <button
           className='button'
-          onClick={() => setGameQuery('game')}
+          onClick={() => {
+            setGameQuery('game');
+          }}
         >
           What's Popular?
         </button>

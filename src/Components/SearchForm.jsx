@@ -2,8 +2,8 @@ import React, { useState, useContext } from 'react';
 import { AppContext } from './context/AppContext';
 
 const SearchForm = () => {
-  const { setGameQuery, gameQuery } = useContext(AppContext);
-  const [gameInput, setGameInput] = useState(gameQuery);
+  const { setGameQuery } = useContext(AppContext);
+  const [gameInput, setGameInput] = useState('');
   const handleSubmit = (e) => {
     e.preventDefault();
     setGameQuery(gameInput);
