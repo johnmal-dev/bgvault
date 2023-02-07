@@ -2,8 +2,6 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import PaginationDisplay from './PaginationDisplay';
 import SearchForm from './SearchForm';
-import AddToCollectionButton from './AddToCollectionButton';
-import AddToWishlistButton from './AddToWishlistButton';
 import GameDetailsButton from './GameDetailsButton';
 import { AppContext } from './context/AppContext';
 import CollectionToggle from './CollectionToggle';

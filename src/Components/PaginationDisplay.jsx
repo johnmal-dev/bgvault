@@ -33,8 +33,8 @@ const PaginationDisplay = () => {
   }, [itemsPerPage, searchCount, setItemOffset, currentPage]);
 
   const handleItemsPerPageClick = (e) => {
-    setItemOffset(0);
     setItemsPerPage(e.target.value);
+    setItemOffset(0);
   };
 
   return (

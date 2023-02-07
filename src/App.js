@@ -1,5 +1,4 @@
 import React, { useEffect, useContext } from 'react';
-import axios from 'axios';
 import firebase from './database/firebase';
 import { getDatabase, ref, onValue } from 'firebase/database';
 import { Routes, Route } from 'react-router-dom';
@@ -13,6 +12,7 @@ import Footer from './components/Footer';
 import Header from './components/Header';
 import ErrorPage from './components/ErrorPage';
 import { AppContext } from './components/context/AppContext';
+import fetchGames from './utils/services';
 
 function App() {
   const { setSearchResults, setCollection, setWishlist, setSearchCount, gameQuery, itemsPerPage, itemOffset } = useContext(AppContext);
@@ -41,24 +41,18 @@ function App() {
 
   useEffect(() => {
     const getGames = async () => {
-      try {
-        const res = await axios({
-          method: 'get',
-          url: 'https://api.boardgameatlas.com/api/search',
-          responseType: 'json',
-          params: {
-            client_id: 'lmhaeyUdQ0',
-            name: gameQuery,
-            skip: itemOffset,
-            limit: itemsPerPage,
-          },
-        });
+      const params = {
+        name: gameQuery,
+        skip: itemOffset,
+        limit: itemsPerPage,
+      };
+      if (gameQuery) {
+        const res = await fetchGames(params);
         setSearchCount(Math.min(res.data.count, 500));
         setSearchResults(res.data.games);
-      } catch (err) {
-        console.log(err);
       }
     };
+    getGames();
     if (gameQuery) getGames();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [itemOffset, itemsPerPage, gameQuery]);
