@@ -3,6 +3,7 @@ import { useParams, Navigate } from 'react-router-dom';
 import axios from 'axios';
 import CollectionToggle from './CollectionToggle';
 import WishlistToggle from './WishlistToggle';
+import StarRating from './StarRating';
 
 const GameDetails = () => {
   const [game, setGame] = useState({});
@@ -54,6 +55,7 @@ const GameDetails = () => {
               <CollectionToggle game={game} />
               <WishlistToggle game={game} />
             </div>
+            <StarRating game={game} />
             <h2>
               {game.name} ({game.year_published})
             </h2>

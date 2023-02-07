@@ -1,0 +1,23 @@
+@use 'variables' as *;
+
+.stars {
+  margin-block: 20px;
+  border: 1px solid $black;
+  border-radius: $border-radius;
+  box-shadow: $box-shadow;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .star-button {
+    border: none;
+    width: 75px;
+    height: 75px;
+    cursor: pointer;
+    padding: 5px;
+    .star-icon {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
