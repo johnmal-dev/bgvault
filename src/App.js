@@ -12,7 +12,6 @@ import GameDetails from './Components/GameDetails';
 import Footer from './Components/Footer';
 import Header from './Components/Header';
 import ErrorPage from './Components/ErrorPage';
-import { ToastContainer } from 'react-toastify';
 
 function App() {
   const [searchResults, setSearchResults] = useState([]);
@@ -115,18 +114,6 @@ function App() {
         />
       </Routes>
       <Footer />
-      <ToastContainer
-        position='bottom-right'
-        autoClose={1000}
-        hideProgressBar
-        newestOnTop
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss={false}
-        draggable={false}
-        pauseOnHover
-        theme='dark'
-      />
     </div>
   );
 }
