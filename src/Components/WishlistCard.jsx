@@ -21,11 +21,13 @@ const WishlistCard = ({ game }) => {
       </div>
       <div className='game-info'>
         <div className='bold text-center'>{name}</div>
+      </div>
+      <div className='game-buttons'>
         <Link to={`/gameDetails/${id}`}>
           <GameDetailsButton />
         </Link>
+        <RemoveFromWishlistButton game={game} />
       </div>
-      <RemoveFromWishlistButton game={game} />
     </div>
   );
 };
