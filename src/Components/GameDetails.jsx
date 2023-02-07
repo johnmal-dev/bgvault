@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Navigate } from 'react-router-dom';
 import axios from 'axios';
+import CollectionToggle from './CollectionToggle';
+import WishlistToggle from './WishlistToggle';
 
-const GameDetails = ({ isInCollection }) => {
+const GameDetails = () => {
   const [game, setGame] = useState({});
   const [shouldRedirect, setShouldRedirect] = useState(false);
   const { gameId } = useParams();
@@ -31,7 +33,6 @@ const GameDetails = ({ isInCollection }) => {
     };
     getGame();
   }, [gameId]);
-
   return (
     <>
       {shouldRedirect && (
@@ -48,6 +49,10 @@ const GameDetails = ({ isInCollection }) => {
                 src={game.images.medium}
                 alt={game.name}
               />
+            </div>
+            <div className='game-buttons'>
+              <CollectionToggle game={game} />
+              <WishlistToggle game={game} />
             </div>
             <h2>
               {game.name} ({game.year_published})

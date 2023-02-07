@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import firebase from '../database/firebase';
 import { getDatabase, ref, update } from 'firebase/database';
 import { FaMinus } from 'react-icons/fa';
 import { successAlert, errorAlert, deletePrompt } from '../utils/alerts';
+import { AppContext } from './context/AppContext';
 
 const RemoveFromCollectionButton = ({ game }) => {
+  const { collection } = useContext(AppContext);
+  const keyFromCollection = collection.filter((item) => item.id === game.id)[0].key;
   const removeFromCollection = (key) => {
     const db = getDatabase(firebase);
     const collectionRef = ref(db, '/collection');
@@ -18,7 +21,7 @@ const RemoveFromCollectionButton = ({ game }) => {
   };
 
   const handleClick = () => {
-    deletePrompt(game.key, game.name, 'collection', removeFromCollection);
+    deletePrompt(keyFromCollection, game.name, 'collection', removeFromCollection);
   };
   return (
     <button

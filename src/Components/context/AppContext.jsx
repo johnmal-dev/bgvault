@@ -10,6 +10,19 @@ const ContextApp = ({ children }) => {
   const [gameQuery, setGameQuery] = useState('');
   const [itemsPerPage, setItemsPerPage] = useState(25);
   const [itemOffset, setItemOffset] = useState(0);
+
+  const isInCollection = (gameId) => {
+    const res = collection.some((item) => item.id === gameId);
+    console.log(res);
+    return res;
+  };
+
+  const isInWishlist = (gameId) => {
+    const res = wishlist.some((item) => item.id === gameId);
+    console.log(res);
+    return res;
+  };
+
   return (
     <AppContext.Provider
       value={{
@@ -27,6 +40,8 @@ const ContextApp = ({ children }) => {
         setItemsPerPage,
         itemOffset,
         setItemOffset,
+        isInCollection,
+        isInWishlist,
       }}
     >
       {children}

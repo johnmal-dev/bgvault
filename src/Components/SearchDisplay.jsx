@@ -6,9 +6,11 @@ import AddToCollectionButton from './AddToCollectionButton';
 import AddToWishlistButton from './AddToWishlistButton';
 import GameDetailsButton from './GameDetailsButton';
 import { AppContext } from './context/AppContext';
+import CollectionToggle from './CollectionToggle';
+import WishlistToggle from './WishlistToggle';
 
 const SearchDisplay = () => {
-  const { searchResults, itemsPerPage, setItemsPerPage, searchCount, setItemOffset, setGameQuery } = useContext(AppContext);
+  const { searchResults, searchCount, setGameQuery } = useContext(AppContext);
   return (
     <div className='search-display'>
       <div className='container'>
@@ -89,20 +91,15 @@ const SearchDisplay = () => {
                             <Link to={`/gameDetails/${id}`}>
                               <GameDetailsButton />
                             </Link>
-                            <AddToCollectionButton game={game} />
-                            <AddToWishlistButton game={game} />
+                            <CollectionToggle game={game} />
+                            <WishlistToggle game={game} />
                           </td>
                         </tr>
                       );
                     })}
                 </tbody>
               </table>
-              <PaginationDisplay
-                itemsPerPage={itemsPerPage}
-                setItemsPerPage={setItemsPerPage}
-                searchCount={searchCount}
-                setItemOffset={setItemOffset}
-              />
+              <PaginationDisplay />
             </>
           )}
         </div>
