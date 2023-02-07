@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import firebase from '../database/firebase';
 import { getDatabase, ref, update } from 'firebase/database';
 import { FaHeartBroken } from 'react-icons/fa';
 import { successAlert, errorAlert, deletePrompt } from '../utils/alerts';
+import { AppContext } from './context/AppContext';
 
 const RemoveFromWishlistButton = ({ game }) => {
+  const { wishlist } = useContext(AppContext);
+  const keyFromWishlist = wishlist.filter((item) => item.id === game.id)[0].key;
   const removeFromWishlist = (key) => {
     const db = getDatabase(firebase);
     const wishlistRef = ref(db, '/wishlist');
@@ -18,7 +21,7 @@ const RemoveFromWishlistButton = ({ game }) => {
   };
 
   const handleClick = () => {
-    deletePrompt(game.key, game.name, 'collection', removeFromWishlist);
+    deletePrompt(keyFromWishlist, game.name, 'wishlist', removeFromWishlist);
   };
   return (
     <button
