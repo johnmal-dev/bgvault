@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import WishlistCard from './WishlistCard';
+import { AppContext } from './context/AppContext';
 
-const WishlistDisplay = ({ wishlist }) => {
+const WishlistDisplay = () => {
+  const { wishlist } = useContext(AppContext);
   return (
     <div className='wishlist-display text-center'>
       <div className='container'>

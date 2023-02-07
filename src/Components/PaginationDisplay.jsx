@@ -1,6 +1,8 @@
-import React, { useState, useEffect, useId } from 'react';
+import React, { useState, useEffect, useId, useContext } from 'react';
+import { AppContext } from './context/AppContext';
 
-const PaginationDisplay = ({ itemsPerPage, setItemsPerPage, searchCount, setItemOffset }) => {
+const PaginationDisplay = () => {
+  const { itemsPerPage, setItemsPerPage, searchCount, setItemOffset } = useContext(AppContext);
   const [pages, setPages] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const selectId = useId();

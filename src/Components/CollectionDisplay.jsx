@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import CollectionCard from './CollectionCard';
+import { AppContext } from './context/AppContext';
 
-const CollectionDisplay = ({ collection }) => {
+const CollectionDisplay = () => {
+  const { collection } = useContext(AppContext);
   return (
     <div className='collection-display text-center'>
       <div className='container'>

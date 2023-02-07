@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { AppContext } from './context/AppContext';
 
-const SearchForm = ({ setGameQuery, gameQuery }) => {
+const SearchForm = () => {
+  const { setGameQuery, gameQuery } = useContext(AppContext);
   const [gameInput, setGameInput] = useState(gameQuery);
   const handleSubmit = (e) => {
     e.preventDefault();

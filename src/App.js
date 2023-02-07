@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useContext } from 'react';
 import axios from 'axios';
 import firebase from './database/firebase';
 import { getDatabase, ref, onValue } from 'firebase/database';
@@ -12,20 +12,15 @@ import GameDetails from './Components/GameDetails';
 import Footer from './Components/Footer';
 import Header from './Components/Header';
 import ErrorPage from './Components/ErrorPage';
+import { AppContext } from './Components/context/AppContext';
 
 function App() {
-  const [searchResults, setSearchResults] = useState([]);
-  const [collection, setCollection] = useState([]);
-  const [wishlist, setWishlist] = useState([]);
-  const [searchCount, setSearchCount] = useState(0);
-  const [gameQuery, setGameQuery] = useState('');
-  const [itemsPerPage, setItemsPerPage] = useState(25);
-  const [itemOffset, setItemOffset] = useState(0);
+  const { setSearchResults, setCollection, setWishlist, setSearchCount, gameQuery, itemsPerPage, itemOffset } = useContext(AppContext);
 
   useEffect(() => {
     const database = getDatabase(firebase);
-    const collectionRef = ref(database, '/collection');
-    const wishlistRef = ref(database, '/wishlist');
+    const collectionRef = ref(database, 'collection');
+    const wishlistRef = ref(database, 'wishlist');
     onValue(collectionRef, (res) => {
       const data = res.val();
       const arr = [];
@@ -42,7 +37,7 @@ function App() {
       }
       setWishlist(arr);
     });
-  }, []);
+  }, [setCollection, setWishlist]);
 
   useEffect(() => {
     const getGames = async () => {
@@ -65,6 +60,7 @@ function App() {
       }
     };
     if (gameQuery) getGames();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [itemOffset, itemsPerPage, gameQuery]);
 
   return (
@@ -79,21 +75,13 @@ function App() {
           path='/search'
           element={
             <>
-              <SearchDisplay
-                searchResults={searchResults}
-                itemsPerPage={itemsPerPage}
-                setItemsPerPage={setItemsPerPage}
-                searchCount={searchCount}
-                setItemOffset={setItemOffset}
-                gameQuery={gameQuery}
-                setGameQuery={setGameQuery}
-              />
+              <SearchDisplay />
             </>
           }
         />
         <Route
           path='/collection'
-          element={<CollectionDisplay collection={collection} />}
+          element={<CollectionDisplay />}
         />
         <Route
           path='/gameDetails/:gameId'
@@ -102,7 +90,7 @@ function App() {
 
         <Route
           path='/wishlist'
-          element={<Wishlist wishlist={wishlist} />}
+          element={<Wishlist />}
         />
         <Route
           path='/error'

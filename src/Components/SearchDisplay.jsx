@@ -1,20 +1,19 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import PaginationDisplay from './PaginationDisplay';
 import SearchForm from './SearchForm';
 import AddToCollectionButton from './AddToCollectionButton';
 import AddToWishlistButton from './AddToWishlistButton';
 import GameDetailsButton from './GameDetailsButton';
+import { AppContext } from './context/AppContext';
 
-const SearchDisplay = ({ searchResults, itemsPerPage, setItemsPerPage, searchCount, setItemOffset, gameQuery, setGameQuery }) => {
+const SearchDisplay = () => {
+  const { searchResults, itemsPerPage, setItemsPerPage, searchCount, setItemOffset, setGameQuery } = useContext(AppContext);
   return (
     <div className='search-display'>
       <div className='container'>
         <h2 className='text-center'>Search</h2>
-        <SearchForm
-          gameQuery={gameQuery}
-          setGameQuery={setGameQuery}
-        />
+        <SearchForm />
         <button
           className='button'
           onClick={() => setGameQuery('game')}
@@ -24,12 +23,7 @@ const SearchDisplay = ({ searchResults, itemsPerPage, setItemsPerPage, searchCou
         <div className='search-results'>
           {searchCount > 0 && (
             <>
-              <PaginationDisplay
-                itemsPerPage={itemsPerPage}
-                setItemsPerPage={setItemsPerPage}
-                searchCount={searchCount}
-                setItemOffset={setItemOffset}
-              />
+              <PaginationDisplay />
               <table className='search-table'>
                 <thead>
                   <tr>
