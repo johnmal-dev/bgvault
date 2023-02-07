@@ -91,7 +91,9 @@ const SearchDisplay = ({ searchResults, itemsPerPage, setItemsPerPage, searchCou
                         <td className='game-votes'>{num_user_ratings}</td>
                         <td className='game-price'>{price_text}</td>
                         <td className='game-buttons'>
-                          <GameDetailsButton />
+                          <Link to={`/gameDetails/${id}`}>
+                            <GameDetailsButton />
+                          </Link>
                           <AddToCollectionButton game={game} />
                           <AddToWishlistButton game={game} />
                         </td>

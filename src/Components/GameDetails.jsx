@@ -9,7 +9,6 @@ const GameDetails = ({ isInCollection }) => {
 
   useEffect(() => {
     const getGame = async () => {
-      console.log('getting game');
       try {
         const res = await axios({
           method: 'get',
