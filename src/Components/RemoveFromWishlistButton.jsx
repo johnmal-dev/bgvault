@@ -5,7 +5,7 @@ import { FaHeartBroken } from 'react-icons/fa';
 import { successAlert, errorAlert, deletePrompt } from '../utils/alerts';
 import { AppContext } from './context/AppContext';
 
-const RemoveFromWishlistButton = ({ game }) => {
+const RemoveFromWishlistButton = ({ game, children }) => {
   const { wishlist } = useContext(AppContext);
   const keyFromWishlist = wishlist.filter((item) => item.id === game.id)[0].key;
   const removeFromWishlist = (key) => {
@@ -30,6 +30,7 @@ const RemoveFromWishlistButton = ({ game }) => {
       onClick={handleClick}
     >
       <FaHeartBroken />
+      {children}
     </button>
   );
 };

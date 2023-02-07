@@ -8,10 +8,17 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    .button {
-      border-radius: $border-radius;
-      line-height: 2rem;
-      padding: 2px 5px;
+    .game-buttons {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      .button {
+        border-radius: $border-radius;
+        padding: 2px 5px;
+        display: flex;
+        flex-direction: column;
+      }
     }
   }
 }

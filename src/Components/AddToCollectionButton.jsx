@@ -4,7 +4,7 @@ import { getDatabase, ref, push, update } from 'firebase/database';
 import { FaPlus } from 'react-icons/fa';
 import { errorAlert, successAlert } from '../utils/alerts';
 
-const AddToCollectionButton = ({ game }) => {
+const AddToCollectionButton = ({ game, children }) => {
   const addToCollection = (game) => {
     const db = getDatabase(firebase);
     const collectionRef = ref(db, '/collection');
@@ -26,6 +26,7 @@ const AddToCollectionButton = ({ game }) => {
       }}
     >
       <FaPlus />
+      {children}
     </button>
   );
 };

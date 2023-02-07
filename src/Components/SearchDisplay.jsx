@@ -89,7 +89,9 @@ const SearchDisplay = () => {
                           <td className='game-price'>{price_text}</td>
                           <td className='game-buttons'>
                             <Link to={`/gameDetails/${id}`}>
-                              <GameDetailsButton />
+                              <GameDetailsButton>
+                                <div className='button-text'>Details</div>
+                              </GameDetailsButton>
                             </Link>
                             <CollectionToggle game={game} />
                             <WishlistToggle game={game} />

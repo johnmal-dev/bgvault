@@ -28,9 +28,13 @@ const CollectionCard = ({ game }) => {
       </div>
       <div className='game-buttons'>
         <Link to={`/gameDetails/${id}`}>
-          <GameDetailsButton />
+          <GameDetailsButton>
+            <div className='button-text'>Game Details</div>
+          </GameDetailsButton>
         </Link>
-        <RemoveFromCollectionButton game={game} />
+        <RemoveFromCollectionButton game={game}>
+          <div className='button-text'>Remove</div>
+        </RemoveFromCollectionButton>
       </div>
     </div>
   );

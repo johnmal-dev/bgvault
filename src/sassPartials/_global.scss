@@ -34,4 +34,8 @@ a {
   margin: 5px;
   border-radius: $border-radius;
   cursor: pointer;
+  gap: 5px;
+  .button-text {
+    font-size: 0.6rem;
+  }
 }

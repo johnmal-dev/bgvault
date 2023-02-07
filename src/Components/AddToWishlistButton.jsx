@@ -4,7 +4,7 @@ import { getDatabase, ref, push, update } from 'firebase/database';
 import { FaHeart } from 'react-icons/fa';
 import { successAlert, errorAlert } from '../utils/alerts';
 
-const AddToWishlistButton = ({ game }) => {
+const AddToWishlistButton = ({ game, children }) => {
   const addToWishlist = (game) => {
     const db = getDatabase(firebase);
     const wishlistRef = ref(db, '/wishlist');
@@ -26,6 +26,7 @@ const AddToWishlistButton = ({ game }) => {
       }}
     >
       <FaHeart />
+      {children}
     </button>
   );
 };

@@ -5,7 +5,7 @@ import { FaMinus } from 'react-icons/fa';
 import { successAlert, errorAlert, deletePrompt } from '../utils/alerts';
 import { AppContext } from './context/AppContext';
 
-const RemoveFromCollectionButton = ({ game }) => {
+const RemoveFromCollectionButton = ({ game, children }) => {
   const { collection } = useContext(AppContext);
   const keyFromCollection = collection.filter((item) => item.id === game.id)[0].key;
   const removeFromCollection = (key) => {
@@ -30,6 +30,7 @@ const RemoveFromCollectionButton = ({ game }) => {
       onClick={handleClick}
     >
       <FaMinus />
+      {children}
     </button>
   );
 };

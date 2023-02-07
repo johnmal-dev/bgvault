@@ -14,5 +14,10 @@
     padding: 15px 20px;
     margin-top: 20px;
     margin-bottom: 20px;
+    .game-buttons {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
   }
 }

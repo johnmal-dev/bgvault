@@ -24,9 +24,13 @@ const WishlistCard = ({ game }) => {
       </div>
       <div className='game-buttons'>
         <Link to={`/gameDetails/${id}`}>
-          <GameDetailsButton />
+          <GameDetailsButton>
+            <div className='button-text'>Game Details</div>
+          </GameDetailsButton>
         </Link>
-        <RemoveFromWishlistButton game={game} />
+        <RemoveFromWishlistButton game={game}>
+          <div className='button-text'>Remove</div>
+        </RemoveFromWishlistButton>
       </div>
     </div>
   );
