@@ -3,15 +3,15 @@ import firebase from './database/firebase';
 import { getDatabase, ref, onValue } from 'firebase/database';
 import { Routes, Route } from 'react-router-dom';
 import './App.scss';
-import SearchDisplay from './components/SearchDisplay';
-import CollectionDisplay from './components/CollectionDisplay';
-import Home from './components/Home';
-import Wishlist from './components/WishlistDisplay';
-import GameDetails from './components/GameDetails';
-import Footer from './components/Footer';
-import Header from './components/Header';
-import ErrorPage from './components/ErrorPage';
-import { AppContext } from './components/context/AppContext';
+import SearchDisplay from './Components/SearchDisplay';
+import CollectionDisplay from './Components/CollectionDisplay';
+import Home from './Components/Home';
+import Wishlist from './Components/WishlistDisplay';
+import GameDetails from './Components/GameDetails';
+import Footer from './Components/Footer';
+import Header from './Components/Header';
+import ErrorPage from './Components/ErrorPage';
+import { AppContext } from './Components/context/AppContext';
 import fetchGames from './utils/services';
 
 function App() {
