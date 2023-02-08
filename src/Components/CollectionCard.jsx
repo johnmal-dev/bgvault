@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import GameDetailsButton from './GameDetailsButton';
 import RemoveFromCollectionButton from './RemoveFromCollectionButton';
+import StarRating from './StarRating';
 
 const CollectionCard = ({ game }) => {
   const {
@@ -23,6 +24,7 @@ const CollectionCard = ({ game }) => {
           />
         </Link>
       </div>
+      <StarRating game={game} />
       <div className='game-info'>
         <div className='bold text-center'>{name}</div>
       </div>

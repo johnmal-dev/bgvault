@@ -14,6 +14,12 @@
     padding: 15px 20px;
     margin-top: 20px;
     margin-bottom: 20px;
+    .img-container {
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
     .game-buttons {
       display: flex;
       justify-content: center;

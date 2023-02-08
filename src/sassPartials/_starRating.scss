@@ -15,9 +15,29 @@
     height: 75px;
     cursor: pointer;
     padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @media (max-width: $mq-desktop-sm) {
+      width: 50px;
+      height: 50px;
+    }
+    @media (max-width: $mq-mobile-lg) {
+      width: 40px;
+      height: 40px;
+    }
     .star-icon {
       width: 100%;
       height: 100%;
+    }
+  }
+}
+
+.collection-display {
+  .stars {
+    .star-button {
+      width: 25px;
+      height: 25px;
     }
   }
 }
