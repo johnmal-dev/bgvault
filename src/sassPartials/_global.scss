@@ -25,6 +25,10 @@ img {
 a {
   text-decoration: none;
   color: inherit;
+  transition: color $transition-time;
+  &:hover {
+    color: $color-3;
+  }
 }
 
 .button {
@@ -38,7 +42,7 @@ a {
   .button-text {
     font-size: 0.6rem;
   }
-  transition: box-shadow 0.3s ease-in-out;
+  transition: box-shadow $transition-time ease-in-out;
   &:hover,
   &:focus-within {
     box-shadow: $box-shadow;
@@ -46,7 +50,7 @@ a {
 }
 
 input {
-  transition: box-shadow 0.3s ease-in-out;
+  transition: box-shadow $transition-time ease-in-out;
   &:hover,
   &:focus-within {
     box-shadow: $box-shadow-hover;

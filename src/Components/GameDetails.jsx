@@ -4,6 +4,7 @@ import axios from 'axios';
 import CollectionToggle from './CollectionToggle';
 import WishlistToggle from './WishlistToggle';
 import StarRating from './StarRating';
+import { errorAlert } from '../utils/alerts';
 
 const GameDetails = () => {
   const [game, setGame] = useState({});
@@ -30,7 +31,7 @@ const GameDetails = () => {
           setShouldRedirect(true);
         }
       } catch (err) {
-        console.log(err);
+        errorAlert(`Error: ${err}`);
       }
     };
     getGame();

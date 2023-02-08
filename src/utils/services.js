@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { errorAlert } from './alerts';
 
 const fetchGames = async (params) => {
   try {
@@ -13,7 +14,7 @@ const fetchGames = async (params) => {
     });
     return res;
   } catch (err) {
-    console.log(err);
+    errorAlert(`Error: ${err}`);
   }
 };
 

@@ -13,6 +13,7 @@ import Header from './Components/Header';
 import ErrorPage from './Components/ErrorPage';
 import { AppContext } from './Components/context/AppContext';
 import fetchGames from './utils/services';
+import { errorAlert } from './utils/alerts';
 
 function App() {
   const { setSearchResults, setCollection, setWishlist, setSearchCount, gameQuery, itemsPerPage, itemOffset } = useContext(AppContext);
@@ -49,7 +50,12 @@ function App() {
       if (gameQuery) {
         const res = await fetchGames(params);
         setSearchCount(Math.min(res.data.count, 500));
-        setSearchResults(res.data.games);
+        const gamesData = res.data.games;
+        if (gamesData.length) {
+          setSearchResults(gamesData);
+        } else {
+          errorAlert(`No games found for ${gameQuery}`);
+        }
       }
     };
     getGames();

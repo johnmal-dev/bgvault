@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import HomeCard from './HomeCard';
 import fetchGames from '../utils/services';
+import { errorAlert } from '../utils/alerts';
 
 const Home = ({ title }) => {
   const [randomId, setRandomId] = useState(0);
@@ -12,7 +13,7 @@ const Home = ({ title }) => {
         const res = await fetchGames({ random: true });
         setRandomId(res.data.games[0].id);
       } catch (err) {
-        console.log(err);
+        errorAlert(`Error: ${err}`);
       }
     };
     getRandomGame();

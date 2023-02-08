@@ -9,6 +9,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: box-shadow $transition-time;
+  &:hover {
+    box-shadow: $box-shadow-hover;
+  }
   .star-button {
     border: none;
     width: 75px;
