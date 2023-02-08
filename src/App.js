@@ -63,19 +63,19 @@ function App() {
       <Routes>
         <Route
           path='/'
-          element={<Home />}
+          element={<Home title='BGV - Home' />}
         />
         <Route
           path='/search'
           element={
             <>
-              <SearchDisplay />
+              <SearchDisplay title='BGV - Search' />
             </>
           }
         />
         <Route
           path='/collection'
-          element={<CollectionDisplay />}
+          element={<CollectionDisplay title='BGV - Collection' />}
         />
         <Route
           path='/gameDetails/:gameId'
@@ -84,7 +84,7 @@ function App() {
 
         <Route
           path='/wishlist'
-          element={<Wishlist />}
+          element={<Wishlist title='BGV - Wishlist' />}
         />
         <Route
           path='/error'

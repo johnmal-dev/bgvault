@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import PaginationDisplay from './PaginationDisplay';
 import SearchForm from './SearchForm';
@@ -7,8 +7,13 @@ import { AppContext } from './context/AppContext';
 import CollectionToggle from './CollectionToggle';
 import WishlistToggle from './WishlistToggle';
 
-const SearchDisplay = () => {
+const SearchDisplay = ({ title }) => {
   const { searchResults, searchCount, setGameQuery } = useContext(AppContext);
+
+  useEffect(() => {
+    document.title = title;
+  }, [title]);
+
   return (
     <div className='search-display'>
       <div className='container'>

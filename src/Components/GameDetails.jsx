@@ -25,6 +25,7 @@ const GameDetails = () => {
         const gameData = res.data.games[0];
         if (gameData) {
           setGame(gameData);
+          document.title = `BGV - ${gameData.name}`;
         } else {
           setShouldRedirect(true);
         }

@@ -3,9 +3,10 @@ import { Link } from 'react-router-dom';
 import HomeCard from './HomeCard';
 import fetchGames from '../utils/services';
 
-const Home = () => {
+const Home = ({ title }) => {
   const [randomId, setRandomId] = useState(0);
   useEffect(() => {
+    document.title = title;
     const getRandomGame = async () => {
       try {
         const res = await fetchGames({ random: true });
@@ -15,7 +16,7 @@ const Home = () => {
       }
     };
     getRandomGame();
-  }, []);
+  }, [title]);
   return (
     <div className='home'>
       <div className='container'>
