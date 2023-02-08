@@ -1,9 +1,14 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { FaInfo } from 'react-icons/fa';
 
-const GameDetailsButton = ({ children }) => {
+const GameDetailsButton = ({ id, children }) => {
+  const navigate = useNavigate();
   return (
-    <button className='button'>
+    <button
+      className='button'
+      onClick={() => navigate(`/gameDetails/${id}`)}
+    >
       <FaInfo />
       {children}
     </button>

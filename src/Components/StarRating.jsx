@@ -2,6 +2,7 @@ import React, { useEffect, useState, useContext } from 'react';
 import firebase from '../database/firebase';
 import { getDatabase, ref, update } from 'firebase/database';
 import { AppContext } from './context/AppContext';
+import { errorAlert, successAlert } from '../utils/alerts';
 import { FaStar } from 'react-icons/fa';
 
 const StarRating = ({ game }) => {
@@ -22,7 +23,13 @@ const StarRating = ({ game }) => {
     const gameDbKey = collection.filter((item) => item.id === game.id)[0].key;
     // add the rating to the db
     const gameRef = ref(db, 'collection/' + gameDbKey);
-    return update(gameRef, { rating: newRating });
+    update(gameRef, { rating: newRating })
+      .then(() => {
+        successAlert('Rating updated!');
+      })
+      .catch((err) => {
+        errorAlert(`Error: ${err}`);
+      });
   };
 
   return (

@@ -23,6 +23,11 @@
         justify-content: flex-start;
         align-items: baseline;
         height: 250px;
+        transition: box-shadow 0.3s ease-in-out;
+        &:hover,
+        &:focus-within {
+          box-shadow: $box-shadow-hover;
+        }
         @media (max-width: $mq-mobile-lg) {
           height: 200px;
         }

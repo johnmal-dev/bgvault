@@ -7,6 +7,7 @@ const WishlistCard = ({ game }) => {
   const {
     id,
     name,
+    price_text,
     images: { small: image },
   } = game;
   return (
@@ -21,13 +22,12 @@ const WishlistCard = ({ game }) => {
       </div>
       <div className='game-info'>
         <div className='bold text-center'>{name}</div>
+        <div className='game-price italic'>{price_text}</div>
       </div>
       <div className='game-buttons'>
-        <Link to={`/gameDetails/${id}`}>
-          <GameDetailsButton>
-            <div className='button-text'>Game Details</div>
-          </GameDetailsButton>
-        </Link>
+        <GameDetailsButton id={id}>
+          <div className='button-text'>Game Details</div>
+        </GameDetailsButton>
         <RemoveFromWishlistButton game={game}>
           <div className='button-text'>Remove</div>
         </RemoveFromWishlistButton>

@@ -24,16 +24,14 @@ const CollectionCard = ({ game }) => {
           />
         </Link>
       </div>
-      <StarRating game={game} />
       <div className='game-info'>
         <div className='bold text-center'>{name}</div>
+        <StarRating game={game} />
       </div>
       <div className='game-buttons'>
-        <Link to={`/gameDetails/${id}`}>
-          <GameDetailsButton>
-            <div className='button-text'>Game Details</div>
-          </GameDetailsButton>
-        </Link>
+        <GameDetailsButton id={id}>
+          <div className='button-text'>Game Details</div>
+        </GameDetailsButton>
         <RemoveFromCollectionButton game={game}>
           <div className='button-text'>Remove</div>
         </RemoveFromCollectionButton>

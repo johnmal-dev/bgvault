@@ -38,4 +38,17 @@ a {
   .button-text {
     font-size: 0.6rem;
   }
+  transition: box-shadow 0.3s ease-in-out;
+  &:hover,
+  &:focus-within {
+    box-shadow: $box-shadow;
+  }
+}
+
+input {
+  transition: box-shadow 0.3s ease-in-out;
+  &:hover,
+  &:focus-within {
+    box-shadow: $box-shadow-hover;
+  }
 }
