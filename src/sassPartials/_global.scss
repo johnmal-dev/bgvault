@@ -1,0 +1,59 @@
+@use '../sassPartials/variables' as *;
+
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+table,
+th,
+td {
+  border: 1px solid black;
+}
+
+img {
+  max-width: 100%;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: color $transition-time;
+  &:hover {
+    color: $color-3;
+  }
+}
+
+.button {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5px;
+  border-radius: $border-radius;
+  cursor: pointer;
+  gap: 5px;
+  .button-text {
+    font-size: 0.6rem;
+  }
+  transition: box-shadow $transition-time ease-in-out;
+  &:hover,
+  &:focus-within {
+    box-shadow: $box-shadow;
+  }
+}
+
+input {
+  transition: box-shadow $transition-time ease-in-out;
+  &:hover,
+  &:focus-within {
+    box-shadow: $box-shadow-hover;
+  }
+}

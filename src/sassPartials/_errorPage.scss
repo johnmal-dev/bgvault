@@ -1,0 +1,6 @@
+@use 'variables' as *;
+
+.error-display {
+  background-color: $color-3;
+  flex-grow: 1;
+}

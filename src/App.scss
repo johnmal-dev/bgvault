@@ -1,0 +1,16 @@
+@use './sassPartials/setup';
+@use './sassPartials/typography';
+@use './sassPartials/global';
+@use './sassPartials/utility';
+@use './sassPartials/header';
+@use './sassPartials/navBar';
+@use './sassPartials/home';
+@use './sassPartials/searchDisplay';
+@use './sassPartials/paginationDisplay';
+@use './sassPartials/gameForm';
+@use './sassPartials/collectionDisplay';
+@use './sassPartials/wishlistDisplay';
+@use './sassPartials/gameDetails';
+@use './sassPartials/starRating';
+@use './sassPartials/footer';
+@use './sassPartials/errorPage';

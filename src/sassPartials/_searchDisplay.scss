@@ -1,0 +1,109 @@
+@use 'variables' as *;
+
+.search-display {
+  background-color: $color-3;
+  flex-grow: 1;
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .game-title {
+      &:hover,
+      &:focus-within {
+        color: $color-1;
+        text-decoration: underline;
+      }
+    }
+    .popular-button {
+      border-radius: $border-radius;
+      padding: 2px 5px;
+    }
+    .game-buttons {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      > * {
+        width: 90%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .button {
+        border-radius: $border-radius;
+        padding: 2px 5px;
+        display: flex;
+        flex-direction: column;
+      }
+    }
+  }
+}
+
+.search-results {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 300px;
+  @media (max-width: $mq-desktop-sm) {
+    font-size: 0.8rem;
+  }
+  @media (max-width: $mq-tablet) {
+    font-size: 0.7rem;
+  }
+  @media (max-width: $mq-mobile-lg) {
+    font-size: 0.6rem;
+  }
+  @media (max-width: $mq-mobile-sm) {
+    font-size: 0.5rem;
+  }
+}
+
+.search-table {
+  text-align: center;
+  background-color: $white;
+}
+
+.game-info {
+  text-align: left;
+  @media (max-width: $mq-mobile-lg) {
+    text-align: center;
+  }
+}
+
+.game-img-container {
+  width: 100px;
+  min-width: 100px;
+  height: 100px;
+  img {
+    width: 90%;
+    aspect-ratio: 1;
+  }
+}
+
+// set game info column width
+th:nth-child(2),
+td:nth-child(2) {
+  width: 400px;
+  @media (max-width: $mq-tablet) {
+    width: auto;
+  }
+}
+
+.search-display {
+  // hide extra columns for tablets and smaller
+  @media (max-width: $mq-tablet) {
+    th:nth-child(n + 3):nth-child(-n + 6),
+    td:nth-child(n + 3):nth-child(-n + 6) {
+      display: none;
+    }
+  }
+
+  // hide game description on lg mobile screens
+  @media (max-width: $mq-mobile-lg) {
+    .game-description {
+      display: none;
+    }
+  }
+}

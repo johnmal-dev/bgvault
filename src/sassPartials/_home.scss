@@ -1,0 +1,61 @@
+@use './variables' as *;
+
+.home {
+  background-color: $color-3;
+  flex-grow: 1;
+  .container {
+    margin-bottom: 30px;
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 30px;
+      @media (max-width: $mq-mobile-lg) {
+        grid-template-columns: 1fr;
+      }
+      .card {
+        font-size: 1.2rem;
+        color: $white;
+        text-shadow: $box-shadow;
+        border-radius: $border-radius;
+        box-shadow: $box-shadow;
+        padding: 10px;
+        display: flex;
+        justify-content: flex-start;
+        align-items: baseline;
+        height: 250px;
+        transition: box-shadow $transition-time ease-in-out;
+        &:hover,
+        &:focus-within {
+          box-shadow: $box-shadow-hover;
+        }
+        @media (max-width: $mq-mobile-lg) {
+          height: 200px;
+        }
+        h3 {
+          align-self: flex-end;
+          margin: 0;
+        }
+        &.search {
+          background: url(../images/joshua-hoehne-c-jTL24e50c-unsplash.jpg);
+          background-position: center;
+          background-size: cover;
+        }
+        &.collection {
+          background: url(../images/christopher-paul-high-fwRMK19zavc-unsplash.jpg);
+          background-position: center;
+          background-size: cover;
+        }
+        &.wishlist {
+          background: url(../images/kathy-marsh-MkoTQg_5xjw-unsplash.jpg);
+          background-position: center;
+          background-size: cover;
+        }
+        &.randomize {
+          background: url(../images/robert-coelho-laNNTAth9vs-unsplash.jpg);
+          background-position: center;
+          background-size: cover;
+        }
+      }
+    }
+  }
+}

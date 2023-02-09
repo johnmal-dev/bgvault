@@ -1,0 +1,47 @@
+@use 'variables' as *;
+
+.collection-display {
+  background-color: $color-3;
+  flex-grow: 1;
+  .container {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    .collection-list {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      @media (max-width: $mq-desktop-sm) {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      @media (max-width: $mq-tablet) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      @media (max-width: $mq-mobile-lg) {
+        grid-template-columns: 1fr;
+      }
+      .collection-card {
+        background-color: $white;
+        box-shadow: $box-shadow;
+        padding: 0.5rem;
+        border-radius: $border-radius;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        .game-info {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+        .game-buttons {
+          display: flex;
+        }
+        transition: box-shadow $transition-time ease-in-out;
+        &:hover,
+        &:focus-within {
+          box-shadow: $box-shadow-hover;
+        }
+      }
+    }
+  }
+}
