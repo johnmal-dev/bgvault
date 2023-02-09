@@ -81,7 +81,7 @@ const SearchDisplay = ({ title }) => {
                             <div>
                               <Link
                                 to={`/gameDetails/${id}`}
-                                className='bold'
+                                className='bold game-title'
                               >
                                 {name}
                               </Link>{' '}

@@ -7,7 +7,7 @@ import RemoveFromWishlistButton from './RemoveFromWishlistButton';
 const WishlistToggle = ({ game }) => {
   const { isInWishlist } = useContext(AppContext);
   return (
-    <div>
+    <>
       {isInWishlist(game.id) ? (
         <RemoveFromWishlistButton game={game}>
           <div className='button-text'>Wishlist</div>
@@ -17,7 +17,7 @@ const WishlistToggle = ({ game }) => {
           <div className='button-text'>Wishlist</div>
         </AddToWishlistButton>
       )}
-    </div>
+    </>
   );
 };
 

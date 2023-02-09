@@ -7,7 +7,7 @@ import RemoveFromCollectionButton from './RemoveFromCollectionButton';
 const CollectionToggle = ({ game }) => {
   const { isInCollection } = useContext(AppContext);
   return (
-    <div>
+    <>
       {isInCollection(game.id) ? (
         <RemoveFromCollectionButton game={game}>
           <div className='button-text'>Collection</div>
@@ -17,7 +17,7 @@ const CollectionToggle = ({ game }) => {
           <div className='button-text'>Collection</div>
         </AddToCollectionButton>
       )}
-    </div>
+    </>
   );
 };
 
