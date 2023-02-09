@@ -1,5 +1,7 @@
 import React from 'react';
+
 import { Link } from 'react-router-dom';
+
 import GameDetailsButton from './GameDetailsButton';
 import RemoveFromCollectionButton from './RemoveFromCollectionButton';
 import StarRating from './StarRating';

@@ -1,7 +1,8 @@
 import React, { useContext } from 'react';
+
+import AddToCollectionButton from './AddToCollectionButton';
 import { AppContext } from './context/AppContext';
 import RemoveFromCollectionButton from './RemoveFromCollectionButton';
-import AddToCollectionButton from './AddToCollectionButton';
 
 const CollectionToggle = ({ game }) => {
   const { isInCollection } = useContext(AppContext);

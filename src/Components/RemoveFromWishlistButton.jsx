@@ -1,9 +1,11 @@
 import React, { useContext } from 'react';
-import firebase from '../database/firebase';
+
 import { getDatabase, ref, update } from 'firebase/database';
+
+import { AppContext } from './context/AppContext';
+import firebase from '../database/firebase';
 import { FaHeartBroken } from 'react-icons/fa';
 import { successAlert, errorAlert, deletePrompt } from '../utils/alerts';
-import { AppContext } from './context/AppContext';
 
 const RemoveFromWishlistButton = ({ game, children }) => {
   const { wishlist } = useContext(AppContext);

@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, Navigate } from 'react-router-dom';
+
 import axios from 'axios';
+import { useParams, Navigate } from 'react-router-dom';
+
 import CollectionToggle from './CollectionToggle';
-import WishlistToggle from './WishlistToggle';
 import StarRating from './StarRating';
 import { errorAlert } from '../utils/alerts';
+import WishlistToggle from './WishlistToggle';
 
 const GameDetails = () => {
   const [game, setGame] = useState({});

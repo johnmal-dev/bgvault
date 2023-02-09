@@ -1,5 +1,7 @@
 import React from 'react';
+
 import { useNavigate } from 'react-router-dom';
+
 import { FaInfo } from 'react-icons/fa';
 
 const GameDetailsButton = ({ id, children }) => {

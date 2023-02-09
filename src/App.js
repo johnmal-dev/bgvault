@@ -1,19 +1,21 @@
 import React, { useEffect, useContext } from 'react';
-import firebase from './database/firebase';
+
 import { getDatabase, ref, onValue } from 'firebase/database';
 import { Routes, Route } from 'react-router-dom';
-import './App.scss';
-import SearchDisplay from './Components/SearchDisplay';
+
 import CollectionDisplay from './Components/CollectionDisplay';
-import Home from './Components/Home';
-import Wishlist from './Components/WishlistDisplay';
-import GameDetails from './Components/GameDetails';
-import Footer from './Components/Footer';
-import Header from './Components/Header';
-import ErrorPage from './Components/ErrorPage';
 import { AppContext } from './Components/context/AppContext';
-import fetchGames from './utils/services';
+import ErrorPage from './Components/ErrorPage';
+import Footer from './Components/Footer';
+import GameDetails from './Components/GameDetails';
+import Header from './Components/Header';
+import Home from './Components/Home';
+import SearchDisplay from './Components/SearchDisplay';
+import Wishlist from './Components/WishlistDisplay';
+import firebase from './database/firebase';
 import { errorAlert } from './utils/alerts';
+import fetchGames from './utils/services';
+import './App.scss';
 
 function App() {
   const { setSearchResults, setCollection, setWishlist, setSearchCount, gameQuery, itemsPerPage, itemOffset } = useContext(AppContext);
@@ -25,7 +27,7 @@ function App() {
     onValue(collectionRef, (res) => {
       const data = res.val();
       const arr = [];
-      for (let key in data) {
+      for (const key in data) {
         arr.push({ key, ...data[key] });
       }
       setCollection(arr);
@@ -33,7 +35,7 @@ function App() {
     onValue(wishlistRef, (res) => {
       const data = res.val();
       const arr = [];
-      for (let key in data) {
+      for (const key in data) {
         arr.push({ key, ...data[key] });
       }
       setWishlist(arr);
@@ -73,11 +75,7 @@ function App() {
         />
         <Route
           path='/search'
-          element={
-            <>
-              <SearchDisplay title='BGV - Search' />
-            </>
-          }
+          element={<SearchDisplay title='BGV - Search' />}
         />
         <Route
           path='/collection'

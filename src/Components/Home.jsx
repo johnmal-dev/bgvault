@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
+
 import { Link } from 'react-router-dom';
+
 import HomeCard from './HomeCard';
-import fetchGames from '../utils/services';
 import { errorAlert } from '../utils/alerts';
+import fetchGames from '../utils/services';
 
 const Home = ({ title }) => {
   const [randomId, setRandomId] = useState(0);

@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from 'react';
-import WishlistCard from './WishlistCard';
+
 import { AppContext } from './context/AppContext';
+import WishlistCard from './WishlistCard';
 
 const WishlistDisplay = ({ title }) => {
   const { wishlist } = useContext(AppContext);

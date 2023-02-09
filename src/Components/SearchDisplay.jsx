@@ -1,10 +1,12 @@
 import React, { useContext, useEffect } from 'react';
+
 import { Link } from 'react-router-dom';
+
+import CollectionToggle from './CollectionToggle';
+import { AppContext } from './context/AppContext';
+import GameDetailsButton from './GameDetailsButton';
 import PaginationDisplay from './PaginationDisplay';
 import SearchForm from './SearchForm';
-import GameDetailsButton from './GameDetailsButton';
-import { AppContext } from './context/AppContext';
-import CollectionToggle from './CollectionToggle';
 import WishlistToggle from './WishlistToggle';
 
 const SearchDisplay = ({ title }) => {

@@ -1,6 +1,8 @@
 import React from 'react';
-import firebase from '../database/firebase';
+
 import { getDatabase, ref, push, update } from 'firebase/database';
+
+import firebase from '../database/firebase';
 import { FaPlus } from 'react-icons/fa';
 import { errorAlert, successAlert } from '../utils/alerts';
 

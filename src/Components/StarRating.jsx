@@ -1,9 +1,11 @@
 import React, { useEffect, useState, useContext } from 'react';
-import firebase from '../database/firebase';
+
 import { getDatabase, ref, update } from 'firebase/database';
+
 import { AppContext } from './context/AppContext';
-import { errorAlert, successAlert } from '../utils/alerts';
+import firebase from '../database/firebase';
 import { FaStar } from 'react-icons/fa';
+import { errorAlert, successAlert } from '../utils/alerts';
 
 const StarRating = ({ game }) => {
   const [rating, setRating] = useState(0);
