@@ -18,12 +18,14 @@ import fetchGames from './utils/services';
 import './App.scss';
 
 function App() {
+  // destructuring state from AppContext component
   const { setSearchResults, setCollection, setWishlist, setSearchCount, gameQuery, itemsPerPage, itemOffset } = useContext(AppContext);
 
   useEffect(() => {
     const database = getDatabase(firebase);
     const collectionRef = ref(database, 'collection');
     const wishlistRef = ref(database, 'wishlist');
+    // subscribe to collection
     onValue(collectionRef, (res) => {
       const data = res.val();
       const arr = [];
@@ -32,6 +34,7 @@ function App() {
       }
       setCollection(arr);
     });
+    // subscribe to wishlist
     onValue(wishlistRef, (res) => {
       const data = res.val();
       const arr = [];
@@ -42,6 +45,7 @@ function App() {
     });
   }, [setCollection, setWishlist]);
 
+  // call to API when a game query is entered, and when pagination inputs are changed
   useEffect(() => {
     const getGames = async () => {
       const params = {
@@ -61,6 +65,7 @@ function App() {
       }
     };
     getGames();
+    // only get games if a game is queried
     if (gameQuery) getGames();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [itemOffset, itemsPerPage, gameQuery]);

@@ -98,6 +98,7 @@ const SearchDisplay = ({ title }) => {
                             <GameDetailsButton id={id}>
                               <div className='button-text'>Details</div>
                             </GameDetailsButton>
+                            {/* toggle between appropriate add/remove buttons */}
                             <CollectionToggle game={game} />
                             <WishlistToggle game={game} />
                           </td>

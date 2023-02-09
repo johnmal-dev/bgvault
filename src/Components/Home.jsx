@@ -8,8 +8,10 @@ import fetchGames from '../utils/services';
 
 const Home = ({ title }) => {
   const [randomId, setRandomId] = useState(0);
+
   useEffect(() => {
     document.title = title;
+    // get a random game ID on each page load
     const getRandomGame = async () => {
       try {
         const res = await fetchGames({ random: true });
