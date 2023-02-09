@@ -38,6 +38,7 @@ const GameDetails = () => {
     };
     getGame();
   }, [gameId]);
+
   return (
     <>
       {shouldRedirect && (
@@ -60,12 +61,16 @@ const GameDetails = () => {
               <WishlistToggle game={game} />
             </div>
             <StarRating game={game} />
-            <h2>
+            <h2 className='game-title'>
               {game.name} ({game.year_published})
             </h2>
             <div className='text-container'>
-              <div>Players: {game.players}</div>
-              <div>Playtime: {game.playtime}</div>
+              <div className='game-stats'>
+                <div>Players: {game.players}</div>
+                <div>Playtime: {game.playtime}</div>
+                <div>Age: {game.min_age}+</div>
+                {game.average_strategy_complexity > 0 && <div>Complexity: {game.average_strategy_complexity.toFixed(2)}</div>}
+              </div>
               <div className='game-description'>Description: {game.description_preview.split(' ').length <= 50 ? game.description_preview : game.description_preview.split(' ').slice(0, 50).join(' ') + '...'}</div>
             </div>
           </div>

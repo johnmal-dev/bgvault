@@ -11,7 +11,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 15px 20px;
+    padding: 25px 30px;
     margin-top: 20px;
     margin-bottom: 20px;
     .img-container {
@@ -19,15 +19,33 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
+      @media (max-width: $mq-mobile-sm) {
+        width: 80%;
+      }
+    }
+    .game-title {
+      text-align: center;
+      @media (max-width: $mq-mobile-lg) {
+        font-size: 1.2rem;
+      }
     }
     .game-buttons {
+      margin-top: 20px;
       display: flex;
-      flex-direction: column;
       justify-content: center;
       align-items: center;
       gap: 5px;
       > * {
         width: 100%;
+      }
+    }
+    .game-stats {
+      margin-block: 20px;
+      display: flex;
+      justify-content: space-evenly;
+      text-align: center;
+      @media (max-width: $mq-tablet) {
+        flex-direction: column;
       }
     }
   }

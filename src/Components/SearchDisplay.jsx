@@ -22,7 +22,7 @@ const SearchDisplay = ({ title }) => {
         <h2 className='text-center'>Search</h2>
         <SearchForm />
         <button
-          className='button'
+          className='popular-button'
           onClick={() => {
             setGameQuery('game');
           }}
@@ -95,11 +95,9 @@ const SearchDisplay = ({ title }) => {
                           <td className='game-votes'>{num_user_ratings}</td>
                           <td className='game-price'>{price_text}</td>
                           <td className='game-buttons'>
-                            <Link to={`/gameDetails/${id}`}>
-                              <GameDetailsButton>
-                                <div className='button-text'>Details</div>
-                              </GameDetailsButton>
-                            </Link>
+                            <GameDetailsButton id={id}>
+                              <div className='button-text'>Details</div>
+                            </GameDetailsButton>
                             <CollectionToggle game={game} />
                             <WishlistToggle game={game} />
                           </td>
